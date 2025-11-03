@@ -18,6 +18,40 @@
             overflow-x: hidden;
         }
 
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            border: none;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 100%);
+            color: white;
+            font-size: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(255, 64, 129, 0.3);
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px rgba(255, 64, 129, 0.35);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -443,7 +477,7 @@
             <h1>Digital Loyalty Made Simple</h1>
             <p>Replace conventional stamp cards with a modern digital platform. Boost customer loyalty, increase sales, and grow your small business with StampCircle.</p>
             <div class="cta-buttons">
-                <a href="https://stampcircle.com/" class="btn btn-primary">Customer Portal</a>
+                <a href="https://customer.stampcircle.com/" class="btn btn-primary">Customer Portal</a>
                 <a href="https://merchant.stampcircle.com/" class="btn btn-secondary">Merchant Portal</a>
             </div>
         </div>
@@ -606,6 +640,8 @@
         </div>
     </section>
 
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -671,6 +707,26 @@
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s, transform 0.6s';
             observer.observe(el);
+        });
+
+        // Floating back-to-top button
+        const backToTopButton = document.getElementById('back-to-top');
+        const toggleBackToTopVisibility = () => {
+            if (window.scrollY > 400) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        };
+
+        window.addEventListener('scroll', toggleBackToTopVisibility, { passive: true });
+        toggleBackToTopVisibility();
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>
