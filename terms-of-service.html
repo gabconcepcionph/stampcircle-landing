@@ -134,24 +134,13 @@
         <div class="pt-6 text-center">
           <a
             id="back-to-login"
-            href="/login"
+            href="index.html"
             class="inline-flex items-center justify-center rounded-full bg-rose-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-rose-600"
           >
-            Back to login
+            Back
           </a>
         </div>
       </div>
     </main>
-
-    <script>
-      const backToLoginLink = document.getElementById('back-to-login');
-      const params = new URLSearchParams(window.location.search);
-      const isWebView = params.get('isWebView');
-      const baseLoginUrl = `${window.location.origin}/login`;
-
-      if (backToLoginLink) {
-        backToLoginLink.href = isWebView === '1' ? `${baseLoginUrl}?isWebView=1` : baseLoginUrl;
-      }
-    </script>
   </body>
 </html>
