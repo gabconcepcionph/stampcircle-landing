@@ -1216,6 +1216,34 @@
                     </div>
                 </div>
 
+                <div style="margin: 2rem 0;">
+                    <button
+                        id="how-it-works-trigger2"
+                        type="button"
+                        aria-haspopup="dialog"
+                        aria-controls="how-it-works-modal"
+                        style="
+                            display: block;
+                            width: 50%;
+                            padding: 1rem 2rem;
+                            font-size: 1.125rem;
+                            font-weight: 600;
+                            color: white;
+                            margin:auto;
+                            background: #FF4081;
+                            border: none;
+                            border-radius: 100px;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                        "
+                        onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 40px rgba(0, 0, 0, 0.3)'"
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0, 0, 0, 0.2)'"
+                    >
+                        How It Works?
+                    </button>
+                </div>
+
                 <!-- Additional Benefits -->
                 <div style="background: #1a1a2e; color: white; border-radius: 1rem; padding: 2.5rem;">
                     <h4 style="font-size: 1.875rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Included With Every Plan</h4>
@@ -1584,11 +1612,12 @@
 
         // How It Works modal
         const howItWorksButton = document.getElementById('how-it-works-trigger');
+        const howItWorksButton2 = document.getElementById('how-it-works-trigger2');
         const howItWorksModal = document.getElementById('how-it-works-modal');
         const howItWorksCloseButton = document.getElementById('how-it-works-close');
         const howItWorksCloseBottomButton = document.getElementById('how-it-works-close-bottom');
 
-        if (howItWorksButton && howItWorksModal && howItWorksCloseButton && howItWorksCloseBottomButton) {
+        if (howItWorksButton && howItWorksButton2 && howItWorksModal && howItWorksCloseButton && howItWorksCloseBottomButton) {
             const setModalVisibility = (isOpen) => {
                 howItWorksModal.classList.toggle('open', isOpen);
                 howItWorksModal.setAttribute('aria-hidden', String(!isOpen));
@@ -1614,6 +1643,7 @@
             };
 
             howItWorksButton.addEventListener('click', openModal);
+            howItWorksButton2.addEventListener('click', openModal);
             howItWorksCloseButton.addEventListener('click', closeModal);
             howItWorksCloseBottomButton.addEventListener('click', closeModal);
             howItWorksModal.addEventListener('click', (event) => {
