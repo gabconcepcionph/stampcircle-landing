@@ -401,6 +401,11 @@
                 display: block;
             }
 
+            .nav-links.open,
+            .nav-toggle[aria-expanded="true"] + .nav-links {
+                display: flex;
+            }
+
             .nav-container {
                 position: relative;
             }
@@ -454,7 +459,7 @@
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="index.html#features">Features</a></li>
                 <li><a href="index.html#partners">Partners</a></li>
-                <li><a href="#use-cases" data-scroll-target="#use-cases">Use Cases</a></li>
+                <li><a href="use-cases.html">Use Cases</a></li>
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#faq">FAQ</a></li>
             </ul>
