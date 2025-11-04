@@ -324,7 +324,24 @@
         /* Partners Section */
         .partners {
             padding: 6rem 2rem;
-            background: #ffffff;
+            background: linear-gradient(135deg, #f8fbff 0%, #fff0f7 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partners::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at top right, rgba(6, 182, 212, 0.2), transparent 55%),
+                radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.18), transparent 60%);
+            pointer-events: none;
+        }
+
+        .partners .container {
+            position: relative;
+            z-index: 1;
         }
 
         .partners-header {
@@ -362,6 +379,16 @@
             text-align: left;
         }
 
+        .partners-card::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 4px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #06b6d4 0%, #FF4081 100%);
+            margin-bottom: 1.5rem;
+        }
+
         .partners-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 50px rgba(255, 64, 129, 0.15);
@@ -384,16 +411,22 @@
         }
 
         .partners-cta a {
-            display: inline-block;
-            text-decoration: none;
-            margin-top: 0.5rem;
-            color: #FF4081;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem 2.75rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #06b6d4 0%, #38bdf8 100%);
+            color: white;
             font-weight: 600;
-            transition: color 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .partners-cta a:hover {
-            color: #E91E63;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 55px rgba(6, 182, 212, 0.35);
         }
 
         /* Benefits Section */
@@ -590,6 +623,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#features">Features</a></li>
+                <li><a href="#partners">Partners</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
@@ -695,9 +729,9 @@
     <section id="partners" class="partners">
         <div class="container">
             <div class="partners-header">
-                <h2>Tools built for StampCircle partners</h2>
+                <h2>Smart tools for event and brand partners</h2>
                 <p>
-                    Manage your stores, send invites, keep invoices organized, and monitor performance from a single, secure dashboard.
+                    Turn every visit, booth, or event into a loyalty opportunity. With StampCircle’s digital stamp tools, you can engage visitors, boost repeat customers, and track results—all in one easy dashboard.
                 </p>
             </div>
 
