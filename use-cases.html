@@ -78,15 +78,15 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
             text-decoration: none;
             color: inherit;
         }
 
         .logo img {
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 3.5rem;
+            height: 3.5rem;
             border-radius: 50%;
             object-fit: cover;
             box-shadow: 0 8px 20px rgba(255, 64, 129, 0.2);
@@ -97,6 +97,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: 700;
         }
 
         .nav-links {
@@ -435,7 +436,7 @@
     <nav>
         <div class="nav-container">
             <a href="index.html#home" class="logo">
-                <img width="" src="https://jbkwgcdsbhyfelflxibh.supabase.co/storage/v1/object/public/assets/logo-bg%20(1).png" alt="StampCircle logo">
+                <img src="https://jbkwgcdsbhyfelflxibh.supabase.co/storage/v1/object/public/assets/logo-bg%20(1).png" alt="StampCircle logo">
                 <span>StampCircle</span>
             </a>
             <button
@@ -453,7 +454,7 @@
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="index.html#features">Features</a></li>
                 <li><a href="index.html#partners">Partners</a></li>
-                <li><a href="use-cases.html">Use Cases</a></li>
+                <li><a href="#use-cases" data-scroll-target="#use-cases">Use Cases</a></li>
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#faq">FAQ</a></li>
             </ul>
@@ -600,6 +601,37 @@
     </footer>
 
     <script>
+        const scrollToTarget = (event, selector) => {
+            const target = document.querySelector(selector);
+            if (!target) {
+                return false;
+            }
+
+            if (event) {
+                event.preventDefault();
+            }
+
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+            return true;
+        };
+
+        document.querySelectorAll('[data-scroll-target]').forEach(anchor => {
+            anchor.addEventListener('click', function (event) {
+                const selector = this.getAttribute('data-scroll-target');
+                if (!scrollToTarget(event, selector)) {
+                    return;
+                }
+
+                if (this.hasAttribute('href') && this.getAttribute('href').startsWith('#')) {
+                    history.replaceState(null, '', this.getAttribute('href'));
+                }
+            });
+        });
+
         const navToggle = document.querySelector('.nav-toggle');
         const navLinks = document.getElementById('primary-navigation');
 
