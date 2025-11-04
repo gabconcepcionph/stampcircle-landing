@@ -116,7 +116,7 @@
 
         .scroll-indicator {
             position: absolute;
-            bottom: 2rem;
+            bottom: 0.5rem;
             left: 50%;
             transform: translateX(-50%);
             display: inline-flex;
@@ -209,10 +209,38 @@
 
         .cta-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.0rem;
             justify-content: center;
             flex-wrap: wrap;
             animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .how-it-works-link {
+            margin-top: 0.5rem;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .how-it-works-button {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .how-it-works-button:hover,
+        .how-it-works-button:focus {
+            color: #ffffff;
+            outline: none;
+        }
+
+        .how-it-works-button:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 3px;
         }
 
         .btn {
@@ -319,6 +347,80 @@
         .feature-card p {
             color: #666;
             line-height: 1.8;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1100;
+        }
+
+        .modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal__content {
+            position: relative;
+            width: min(90vw, 520px);
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.5rem 2rem 2rem;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            color: #333;
+        }
+
+        .modal__close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            line-height: 1;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal__close:hover,
+        .modal__close:focus {
+            color: #0f172a;
+            outline: none;
+        }
+
+        .modal__close:focus-visible {
+            outline: 2px solid #0f172a;
+            outline-offset: 3px;
+        }
+
+        .modal__content h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .modal__content p {
+            margin-bottom: 1.25rem;
+            color: #475569;
+        }
+
+        .modal__list {
+            padding-left: 1.25rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        body.modal-open {
+            overflow: hidden;
         }
 
         /* Partners Section */
@@ -639,11 +741,43 @@
                 <a href="https://customer.stampcircle.com/" class="btn btn-primary">Customer Portal</a>
                 <a href="https://merchant.stampcircle.com/" class="btn btn-secondary">Merchant Portal</a>
             </div>
+            <div class="how-it-works-link">
+                <button
+                    id="how-it-works-trigger"
+                    type="button"
+                    class="how-it-works-button"
+                    aria-haspopup="dialog"
+                    aria-controls="how-it-works-modal"
+                >
+                    How It Works?
+                </button>
+            </div>
         </div>
         <a href="#features" class="scroll-indicator" aria-label="Scroll to features">
             <span class="scroll-indicator__arrow"></span>
         </a>
     </section>
+
+    <div
+        id="how-it-works-modal"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="how-it-works-title"
+        aria-hidden="true"
+    >
+        <div class="modal__content" role="document">
+            <button id="how-it-works-close" type="button" class="modal__close" aria-label="Close How It Works">&times;</button>
+            <h2 id="how-it-works-title">How StampCircle Works</h2>
+            <p>StampCircle makes customer loyalty effortless for both your business and your guests:</p>
+            <ol class="modal__list">
+                <li>Customers sign up through the Customer Portal and receive a unique QR code.</li>
+                <li>Staff scan the code in the Merchant Portal after each visit to award digital stamps.</li>
+                <li>Once enough stamps are collected, customers instantly redeem rewards that you configure.</li>
+            </ol>
+            <p>Everything is tracked in real time, so you can focus on growing loyal relationships.</p>
+        </div>
+    </div>
 
     <!-- Features Section -->
     <section id="features" class="features">
@@ -942,6 +1076,45 @@
                 behavior: 'smooth'
             });
         });
+
+        // How It Works modal
+        const howItWorksButton = document.getElementById('how-it-works-trigger');
+        const howItWorksModal = document.getElementById('how-it-works-modal');
+        const howItWorksCloseButton = document.getElementById('how-it-works-close');
+
+        if (howItWorksButton && howItWorksModal && howItWorksCloseButton) {
+            const setModalVisibility = (isOpen) => {
+                howItWorksModal.classList.toggle('open', isOpen);
+                howItWorksModal.setAttribute('aria-hidden', String(!isOpen));
+                document.body.classList.toggle('modal-open', isOpen);
+            };
+
+            const handleEscape = (event) => {
+                if (event.key === 'Escape') {
+                    closeModal();
+                }
+            };
+
+            const openModal = () => {
+                setModalVisibility(true);
+                document.addEventListener('keydown', handleEscape);
+                howItWorksCloseButton.focus({ preventScroll: true });
+            };
+
+            const closeModal = () => {
+                setModalVisibility(false);
+                document.removeEventListener('keydown', handleEscape);
+                howItWorksButton.focus({ preventScroll: true });
+            };
+
+            howItWorksButton.addEventListener('click', openModal);
+            howItWorksCloseButton.addEventListener('click', closeModal);
+            howItWorksModal.addEventListener('click', (event) => {
+                if (event.target === howItWorksModal) {
+                    closeModal();
+                }
+            });
+        }
     </script>
 </body>
 </html>
