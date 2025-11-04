@@ -75,8 +75,24 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo img {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(255, 64, 129, 0.2);
+        }
+
+        .logo span {
             background: linear-gradient(135deg, #FF4081 0%, #E91E63 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -418,7 +434,10 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">StampCircle</div>
+            <a href="index.html#home" class="logo">
+                <img width="" src="https://jbkwgcdsbhyfelflxibh.supabase.co/storage/v1/object/public/assets/logo-bg%20(1).png" alt="StampCircle logo">
+                <span>StampCircle</span>
+            </a>
             <button
                 type="button"
                 class="nav-toggle"
