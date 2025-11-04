@@ -199,7 +199,7 @@
 
         .hero p {
             font-size: 1.3rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             opacity: 0.95;
             max-width: 700px;
             margin-left: auto;
@@ -414,9 +414,97 @@
         }
 
         .modal__list {
-            padding-left: 1.25rem;
+            padding-left: 1.5rem;
             color: #475569;
             line-height: 1.7;
+        }
+
+        .modal__section {
+            margin-bottom: 2rem;
+        }
+
+        .modal__section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .modal__section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #ff437f;
+        }
+
+        .modal__lead {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #1f2937;
+        }
+
+        .modal__subtitle {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+        }
+
+        .modal__list--numbered {
+            list-style: decimal;
+        }
+
+        .modal__list--numbered li + li {
+            margin-top: 0.75rem;
+        }
+
+        .modal__list--bullet {
+            list-style: disc;
+            margin-top: 0.75rem;
+        }
+
+        .modal__list--bullet li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal__list--check {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .modal__list--check li {
+            position: relative;
+            padding-left: 2.25rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .modal__list--check li::before {
+            content: '\2705';
+            position: absolute;
+            left: 0;
+            top: 0.15rem;
+            font-size: 1.2rem;
+        }
+
+        .modal__note {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .modal__cta {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            color: #ff437f;
+        }
+
+        .modal__cta span {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff5e78 0%, #ff4081 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
         }
 
         body.modal-open {
@@ -769,13 +857,51 @@
         <div class="modal__content" role="document">
             <button id="how-it-works-close" type="button" class="modal__close" aria-label="Close How It Works">&times;</button>
             <h2 id="how-it-works-title">How StampCircle Works</h2>
-            <p>StampCircle makes customer loyalty effortless for both your business and your guests:</p>
-            <ol class="modal__list">
-                <li>Customers sign up through the Customer Portal and receive a unique QR code.</li>
-                <li>Staff scan the code in the Merchant Portal after each visit to award digital stamps.</li>
-                <li>Once enough stamps are collected, customers instantly redeem rewards that you configure.</li>
-            </ol>
-            <p>Everything is tracked in real time, so you can focus on growing loyal relationships.</p>
+            <div class="modal__section">
+                <h3 class="modal__section-title">For Business Owners</h3>
+                <p class="modal__lead">Give stamps and reward customers in under a minute—no hassle, just results.</p>
+                <h4 class="modal__subtitle">Simple 3-Step Process:</h4>
+                <ol class="modal__list modal__list--numbered">
+                    <li>Tap the center button (QR icon) on your app's bottom navigation.</li>
+                    <li>Choose your action:
+                        <ul class="modal__list modal__list--bullet">
+                            <li><strong>Give a Stamp</strong> - Reward customers for their purchase.</li>
+                            <li><strong>Reward Redemption</strong> - Let customers redeem their earned rewards.</li>
+                        </ul>
+                    </li>
+                    <li>Scan the customer's QR code – they'll show their QR from the StampCircle app.</li>
+                </ol>
+                <p class="modal__note">That's it! Transaction complete.</p>
+            </div>
+
+            <div class="modal__section">
+                <h3 class="modal__section-title">For Customers</h3>
+                <h4 class="modal__subtitle">Earning Stamps</h4>
+                <ol class="modal__list modal__list--numbered">
+                    <li>Open your StampCircle app.</li>
+                    <li>Show your QR code to the merchant.</li>
+                    <li>Get your stamp instantly.</li>
+                </ol>
+                <h4 class="modal__subtitle">Redeeming Rewards</h4>
+                <ol class="modal__list modal__list--numbered">
+                    <li>Select the reward you want to redeem in the app.</li>
+                    <li>Show your reward QR code to the merchant.</li>
+                    <li>Enjoy your reward!</li>
+                </ol>
+            </div>
+
+            <div class="modal__section">
+                <h3 class="modal__section-title">Why StampCircle?</h3>
+                <ul class="modal__list modal__list--check">
+                    <li>Less than 1 minute per transaction.</li>
+                    <li>Zero paper waste – fully digital.</li>
+                    <li>Boost repeat orders through customer loyalty.</li>
+                    <li>Build lasting relationships with your customers.</li>
+                    <li>Increase sales with minimal effort.</li>
+                </ul>
+            </div>
+
+            <p class="modal__cta"><span>Go digital. Go StampCircle.</span></p>
         </div>
     </div>
 
