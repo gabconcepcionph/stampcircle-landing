@@ -4,320 +4,582 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StampCircle - Use Cases for Every Business</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#ffe5ef',
-                            100: '#ffcce0',
-                            200: '#ff99c1',
-                            300: '#ff66a2',
-                            400: '#ff4081',
-                            500: '#ff1a62',
-                            600: '#e91e63',
-                            700: '#c2185b',
-                            800: '#ad1457',
-                            900: '#880e4f',
-                        }
-                    }
-                }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FF4081 0%, #E91E63 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: background 0.3s ease;
+        }
+
+        .nav-toggle:focus-visible {
+            outline: 2px solid #FF4081;
+            outline-offset: 2px;
+        }
+
+        .nav-toggle:hover {
+            background: rgba(255, 64, 129, 0.1);
+        }
+
+        .nav-toggle__bar {
+            display: block;
+            width: 1.75rem;
+            height: 0.2rem;
+            background: #333;
+            border-radius: 999px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-origin: center;
+        }
+
+        .nav-toggle__bar + .nav-toggle__bar {
+            margin-top: 0.35rem;
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(1) {
+            transform: translateY(0.55rem) rotate(45deg);
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(3) {
+            transform: translateY(-0.55rem) rotate(-45deg);
+        }
+
+        .nav-links a:hover {
+            color: #FF4081;
+        }
+
+        .nav-links.open {
+            display: flex;
+        }
+
+        header {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 50%, #E91E63 100%);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+            margin-top: 6.5rem;
+        }
+
+        header::before,
+        header::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        header::before {
+            width: 500px;
+            height: 500px;
+            top: -250px;
+            right: -250px;
+        }
+
+        header::after {
+            width: 300px;
+            height: 300px;
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin: 0 auto;
+            max-width: 600px;
+            opacity: 0.95;
+        }
+
+        .page-section {
+            padding: 6rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .use-case-card {
+            background: white;
+            padding: 2.25rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(255, 64, 129, 0.15);
+        }
+
+        .use-case-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .use-case-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: #333;
+        }
+
+        .use-case-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .use-case-card span {
+            color: #FF4081;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 50%, #E91E63 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #FF4081;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #FF4081;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.05rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 2rem;
+                flex-direction: column;
+                gap: 1rem;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1.5rem;
+                border-radius: 1rem;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+                min-width: min(220px, calc(100vw - 3rem));
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .nav-links a {
+                display: block;
+            }
+
+            .nav-container {
+                position: relative;
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.35rem;
+            }
+
+            header {
+                margin-top: 6rem;
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2.4rem;
+            }
+
+            .cta-section p {
+                font-size: 1.05rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
             }
         }
-    </script>
+    </style>
 </head>
-<body class="font-sans text-gray-800">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/98 backdrop-blur-lg shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold bg-gradient-to-r from-pink-500 via-primary-400 to-primary-600 bg-clip-text text-transparent">
-                    StampCircle
-                </div>
-                <div class="flex items-center gap-6">
-                    <a href="/" class="text-gray-700 hover:text-primary-400 font-medium transition-colors">Home</a>
-                    <a href="/use-cases" class="text-primary-400 font-medium">Use Cases</a>
-                </div>
-            </div>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">StampCircle</div>
+            <button
+                type="button"
+                class="nav-toggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="primary-navigation"
+            >
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+            </button>
+            <ul class="nav-links" id="primary-navigation">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#partners">Partners</a></li>
+                <li><a href="use-cases.html">Use Cases</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="min-h-[60vh] flex items-center bg-gradient-to-br from-pink-500 via-primary-400 to-primary-600 text-white relative overflow-hidden pt-20">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-        <div class="absolute bottom-0 left-0 w-72 h-72 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center relative z-10">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6">
-                Perfect for Every Business
-            </h1>
-            <p class="text-lg sm:text-xl lg:text-2xl mb-8 opacity-95 max-w-3xl mx-auto">
-                Discover how StampCircle transforms customer loyalty across industries and business types
-            </p>
+    <header>
+        <div class="hero-content">
+            <h1>Perfect for Every Business</h1>
+            <p>Discover how StampCircle transforms customer loyalty across industries and business types.</p>
         </div>
-    </section>
+    </header>
 
-    <!-- Use Cases Grid -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Retail & Shopping -->
-            <div class="mb-16">
-                <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-pink-500 to-primary-400 bg-clip-text text-transparent">
-                    Retail & Shopping
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">🛍️</div>
-                        <h3 class="text-xl font-bold mb-3">Retail Stores</h3>
-                        <p class="text-gray-600 mb-4">
-                            Reward customers for every purchase. Build loyalty with stamps that encourage repeat visits and increase customer lifetime value.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: Buy 10, Get 1 Free</div>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">🎪</div>
-                        <h3 class="text-xl font-bold mb-3">Bazaars & Pop-ups</h3>
-                        <p class="text-gray-600 mb-4">
-                            Create time-limited campaigns for weekend markets and pop-up events. Track returning customers across multiple event dates.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: Visit 3 Markets, Get Exclusive Item</div>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">🛋️</div>
-                        <h3 class="text-xl font-bold mb-3">Furniture Stores</h3>
-                        <p class="text-gray-600 mb-4">
-                            Reward big purchases and encourage referrals. Offer stamps for consultations, purchases, and customer reviews.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 5 Stamps = Free Delivery</div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Personal Care & Services -->
-            <div class="mb-16">
-                <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-pink-500 to-primary-400 bg-clip-text text-transparent">
-                    Personal Care & Services
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">💆</div>
-                        <h3 class="text-xl font-bold mb-3">Spas & Wellness</h3>
-                        <p class="text-gray-600 mb-4">
-                            Encourage regular self-care visits. Reward clients for booking massages, facials, and wellness treatments consistently.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 6 Sessions = Free Treatment</div>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">💇</div>
-                        <h3 class="text-xl font-bold mb-3">Salons</h3>
-                        <p class="text-gray-600 mb-4">
-                            Keep clients coming back for haircuts, coloring, and styling services. Build long-term relationships with stamp rewards.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 8 Visits = Free Hair Treatment</div>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">🧺</div>
-                        <h3 class="text-xl font-bold mb-3">Laundry Services</h3>
-                        <p class="text-gray-600 mb-4">
-                            Reward regular customers who bring their laundry weekly. Increase retention and build predictable revenue.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 10 Loads = 1 Free Load</div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Food & Beverage -->
-            <div class="mb-16">
-                <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-pink-500 to-primary-400 bg-clip-text text-transparent">
-                    Food & Beverage
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">☕</div>
-                        <h3 class="text-xl font-bold mb-3">Coffee Shops</h3>
-                        <p class="text-gray-600 mb-4">
-                            Perfect for daily coffee drinkers. Give stamps for every purchase and watch customers become loyal regulars.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: Buy 9 Coffees, Get 10th Free</div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Repair & Maintenance -->
-            <div class="mb-16">
-                <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-pink-500 to-primary-400 bg-clip-text text-transparent">
-                    Repair & Maintenance
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">🔧</div>
-                        <h3 class="text-xl font-bold mb-3">Repair Services</h3>
-                        <p class="text-gray-600 mb-4">
-                            Reward customers who return for phone repairs, appliance fixes, or tech services. Build trust and repeat business.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 5 Services = Free Screen Protection</div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Events & Entertainment -->
-            <div class="mb-16">
-                <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-pink-500 to-primary-400 bg-clip-text text-transparent">
-                    Events & Entertainment
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">🏃</div>
-                        <h3 class="text-xl font-bold mb-3">Fun Runs & Races</h3>
-                        <p class="text-gray-600 mb-4">
-                            Encourage participants to join multiple events. Reward loyal runners with stamps for each race they complete.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 4 Races = Free Registration</div>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">🎵</div>
-                        <h3 class="text-xl font-bold mb-3">Concerts & Shows</h3>
-                        <p class="text-gray-600 mb-4">
-                            Build a fanbase of repeat attendees. Offer stamps for ticket purchases and reward super fans with VIP perks.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 5 Shows = Backstage Pass</div>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">🎂</div>
-                        <h3 class="text-xl font-bold mb-3">Party & Event Services</h3>
-                        <p class="text-gray-600 mb-4">
-                            Perfect for birthday planners, event organizers, and party venues. Reward customers who book multiple events.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 3 Events = Free Party Package</div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Professional Services -->
-            <div class="mb-16">
-                <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-pink-500 to-primary-400 bg-clip-text text-transparent">
-                    Professional Services
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">📸</div>
-                        <h3 class="text-xl font-bold mb-3">Photography Studios</h3>
-                        <p class="text-gray-600 mb-4">
-                            Encourage clients to book family portraits, graduations, and special events. Reward repeat bookings and referrals.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 4 Sessions = Free Photo Prints</div>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">🎥</div>
-                        <h3 class="text-xl font-bold mb-3">Videography Services</h3>
-                        <p class="text-gray-600 mb-4">
-                            Build relationships with clients who need video services. Reward bookings for weddings, corporate events, and more.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 3 Projects = Free Highlights Video</div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Workspace & Rentals -->
-            <div class="mb-16">
-                <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-pink-500 to-primary-400 bg-clip-text text-transparent">
-                    Workspace & Rentals
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">💼</div>
-                        <h3 class="text-xl font-bold mb-3">Co-working Spaces</h3>
-                        <p class="text-gray-600 mb-4">
-                            Reward members for daily check-ins. Encourage consistent workspace usage and build a thriving community.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 20 Days = Free Week Pass</div>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">🏢</div>
-                        <h3 class="text-xl font-bold mb-3">Workplace Attendance</h3>
-                        <p class="text-gray-600 mb-4">
-                            Motivate employees with attendance rewards. Give stamps for 10 consecutive days of punctual attendance.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 10 Consecutive Days = Day Off</div>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">🏠</div>
-                        <h3 class="text-xl font-bold mb-3">Rental Spaces</h3>
-                        <p class="text-gray-600 mb-4">
-                            Perfect for studio rentals, event spaces, and meeting rooms. Reward frequent renters with stamp benefits.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 8 Bookings = Free 2-Hour Session</div>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
-                        <div class="text-4xl mb-4">🚗</div>
-                        <h3 class="text-xl font-bold mb-3">Vehicle Rentals</h3>
-                        <p class="text-gray-600 mb-4">
-                            Encourage repeat rentals for cars, bikes, or scooters. Build loyalty with customers who rent frequently.
-                        </p>
-                        <div class="text-sm text-primary-400 font-semibold">Example: 5 Rentals = 1 Day Free</div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-br from-pink-500 via-primary-400 to-primary-600 text-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">Ready to Start Your Loyalty Program?</h2>
-            <p class="text-lg sm:text-xl mb-10 opacity-95">
-                Join hundreds of businesses already growing with StampCircle
-            </p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="https://merchant.stampcircle.com/" class="px-10 py-4 text-lg font-semibold bg-white text-primary-400 rounded-full shadow-2xl hover:shadow-3xl hover:-translate-y-1 transition-all">
-                    Get Started Now
-                </a>
-                <a href="/" class="px-10 py-4 text-lg font-semibold bg-white/20 text-white border-2 border-white rounded-full hover:bg-white hover:text-primary-400 hover:-translate-y-1 transition-all">
-                    Learn More
-                </a>
+    <section id="use-cases" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Use Cases Across Industries</h2>
+            <div class="use-case-grid">
+                <article class="use-case-card">
+                    <div class="use-case-icon">🛍️</div>
+                    <h3>Retail Stores</h3>
+                    <p>Reward customers for every purchase. Build loyalty with stamps that encourage repeat visits and increase customer lifetime value.</p>
+                    <span>Example: Buy 10, Get 1 Free</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">🎪</div>
+                    <h3>Bazaars & Pop-ups</h3>
+                    <p>Create time-limited campaigns for weekend markets and pop-up events. Track returning customers across multiple event dates.</p>
+                    <span>Example: Visit 3 Markets, Get Exclusive Item</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">🛋️</div>
+                    <h3>Furniture Stores</h3>
+                    <p>Reward big purchases and encourage referrals. Offer stamps for consultations, purchases, and customer reviews.</p>
+                    <span>Example: 5 Stamps = Free Delivery</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">💆</div>
+                    <h3>Spas & Wellness</h3>
+                    <p>Encourage regular self-care visits. Reward clients for booking massages, facials, and wellness treatments consistently.</p>
+                    <span>Example: 6 Sessions = Free Treatment</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">💇</div>
+                    <h3>Salons</h3>
+                    <p>Keep clients coming back for haircuts, coloring, and styling services. Build long-term relationships with stamp rewards.</p>
+                    <span>Example: 8 Visits = Free Hair Treatment</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">🧺</div>
+                    <h3>Laundry Services</h3>
+                    <p>Reward regular customers who bring their laundry weekly. Increase retention and build predictable revenue.</p>
+                    <span>Example: 10 Loads = 1 Free Load</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">☕</div>
+                    <h3>Coffee Shops</h3>
+                    <p>Perfect for daily coffee drinkers. Give stamps for every purchase and watch customers become loyal regulars.</p>
+                    <span>Example: Buy 9 Coffees, Get 10th Free</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">🔧</div>
+                    <h3>Repair Services</h3>
+                    <p>Reward customers who return for phone repairs, appliance fixes, or tech services. Build trust and repeat business.</p>
+                    <span>Example: 5 Services = Free Screen Protection</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">🏃</div>
+                    <h3>Fun Runs & Races</h3>
+                    <p>Encourage participants to join multiple events. Reward loyal runners with stamps for each race they complete.</p>
+                    <span>Example: 4 Races = Free Registration</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">🎵</div>
+                    <h3>Concerts & Shows</h3>
+                    <p>Build a fanbase of repeat attendees. Offer stamps for ticket purchases and reward super fans with VIP perks.</p>
+                    <span>Example: 5 Shows = Backstage Pass</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">🎂</div>
+                    <h3>Party & Event Services</h3>
+                    <p>Perfect for birthday planners, event organizers, and party venues. Reward customers who book multiple events.</p>
+                    <span>Example: 3 Events = Free Party Package</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">📸</div>
+                    <h3>Photography Studios</h3>
+                    <p>Encourage clients to book family portraits, graduations, and special events. Reward repeat bookings and referrals.</p>
+                    <span>Example: 4 Sessions = Free Photo Prints</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">🎥</div>
+                    <h3>Videography Services</h3>
+                    <p>Build relationships with clients who need video services. Reward bookings for weddings, corporate events, and more.</p>
+                    <span>Example: 3 Projects = Free Highlights Video</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">💼</div>
+                    <h3>Co-working Spaces</h3>
+                    <p>Reward members for daily check-ins. Encourage consistent workspace usage and build a thriving community.</p>
+                    <span>Example: 20 Days = Free Week Pass</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">🏢</div>
+                    <h3>Workplace Attendance</h3>
+                    <p>Motivate employees with attendance rewards. Give stamps for 10 consecutive days of punctual attendance.</p>
+                    <span>Example: 10 Consecutive Days = Day Off</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">🏠</div>
+                    <h3>Rental Spaces</h3>
+                    <p>Perfect for studio rentals, event spaces, and meeting rooms. Reward frequent renters with stamp benefits.</p>
+                    <span>Example: 8 Bookings = Free 2-Hour Session</span>
+                </article>
+                <article class="use-case-card">
+                    <div class="use-case-icon">🚗</div>
+                    <h3>Vehicle Rentals</h3>
+                    <p>Encourage repeat rentals for cars, bikes, or scooters. Build loyalty with customers who rent frequently.</p>
+                    <span>Example: 5 Rentals = 1 Day Free</span>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex flex-wrap justify-center gap-8 mb-8">
-                <a href="https://stampcircle.com/privacy-policy" class="opacity-80 hover:opacity-100 transition-opacity">Privacy Policy</a>
-                <a href="https://stampcircle.com/terms-of-service" class="opacity-80 hover:opacity-100 transition-opacity">Terms of Service</a>
-                <a href="https://stampcircle.com/faq" class="opacity-80 hover:opacity-100 transition-opacity">FAQ</a>
+    <section class="cta-section">
+        <h2>Ready to Start Your Loyalty Program?</h2>
+        <p>Join hundreds of businesses already growing with StampCircle.</p>
+        <div class="cta-actions">
+            <a href="https://merchant.stampcircle.com/" class="btn btn-primary">Get Started Now</a>
+            <a href="index.html" class="btn btn-secondary">Learn More</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="index.html#faq" data-scroll-target="#faq">FAQ</a>
             </div>
-            <p class="opacity-70">&copy; 2025 StampCircle. All rights reserved.</p>
+            <p>&copy; 2025 StampCircle. All rights reserved.</p>
         </div>
     </footer>
 
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.getElementById('primary-navigation');
+
+        if (navToggle && navLinks) {
+            const toggleMenu = () => {
+                const isOpen = navLinks.classList.toggle('open');
+                navToggle.classList.toggle('active', isOpen);
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+            };
+
+            const closeMenu = () => {
+                if (!navLinks.classList.contains('open')) {
+                    return;
+                }
+
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            };
+
+            navToggle.addEventListener('click', toggleMenu);
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+        }
+    </script>
 </body>
 </html>
