@@ -62,6 +62,7 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
             z-index: 1000;
+            position: relative;
             padding: 1rem 0;
         }
 
@@ -376,7 +377,7 @@
             }
 
             .hero-content p {
-                font-size: 1.05rem;
+                font-size: 1.1rem;
             }
 
             .nav-links {
@@ -391,6 +392,46 @@
                 border-radius: 1rem;
                 box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
                 min-width: min(220px, calc(100vw - 3rem));
+                z-index: 1001;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .nav-links a {
+                display: block;
+            }
+
+            .nav-container {
+                position: relative;
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.35rem;
+                z-index: 1002;
+                position: relative;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.75rem 1.5rem;
+                border-radius: 0.5rem;
+                transition: background-color 0.2s ease, color 0.2s ease;
+            }
+
+            .nav-links a:hover,
+            .nav-links a:focus {
+                background: rgba(255, 64, 129, 0.1);
+                color: #FF4081;
             }
 
             .nav-links li {
@@ -416,6 +457,8 @@
                 justify-content: center;
                 align-items: center;
                 gap: 0.35rem;
+                z-index: 1002;
+                position: relative;
             }
 
             header {
@@ -450,18 +493,20 @@
                 aria-label="Toggle navigation"
                 aria-expanded="false"
                 aria-controls="primary-navigation"
+                aria-haspopup="true"
             >
                 <span class="nav-toggle__bar"></span>
                 <span class="nav-toggle__bar"></span>
                 <span class="nav-toggle__bar"></span>
             </button>
-            <ul class="nav-links" id="primary-navigation">
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#features">Features</a></li>
-                <li><a href="index.html#partners">Partners</a></li>
-                <li><a href="use-cases.html">Use Cases</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#faq">FAQ</a></li>
+            <ul class="nav-links" id="primary-navigation" role="menu">
+                <li role="none"><a href="index.html#home" role="menuitem">Home</a></li>
+                <li role="none"><a href="index.html#pricing" role="menuitem">Pricing</a></li>
+                <li role="none"><a href="index.html#features" role="menuitem">Features</a></li>
+                <li role="none"><a href="index.html#partners" role="menuitem">Partners</a></li>
+                <li role="none"><a href="use-cases.html" role="menuitem" aria-current="page">Use Cases</a></li>
+                <li role="none"><a href="index.html#about" role="menuitem">About</a></li>
+                <li role="none"><a href="index.html#faq" role="menuitem">FAQ</a></li>
             </ul>
         </div>
     </nav>
@@ -604,6 +649,10 @@
             <p>&copy; 2025 StampCircle. All rights reserved.</p>
         </div>
     </footer>
+    
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <span aria-hidden="true">↑</span>
+    </button>
 
     <script>
         const scrollToTarget = (event, selector) => {
@@ -637,6 +686,7 @@
             });
         });
 
+        // Mobile navigation toggle
         const navToggle = document.querySelector('.nav-toggle');
         const navLinks = document.getElementById('primary-navigation');
 
