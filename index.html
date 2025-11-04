@@ -98,6 +98,55 @@
             transition: color 0.3s;
         }
 
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: background 0.3s ease;
+        }
+
+        .nav-toggle:focus-visible {
+            outline: 2px solid #FF4081;
+            outline-offset: 2px;
+        }
+
+        .nav-toggle:hover {
+            background: rgba(255, 64, 129, 0.1);
+        }
+
+        .nav-toggle__bar {
+            display: block;
+            width: 1.75rem;
+            height: 0.2rem;
+            background: #333;
+            border-radius: 999px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-origin: center;
+        }
+
+        .nav-toggle__bar + .nav-toggle__bar {
+            margin-top: 0.35rem;
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(1) {
+            transform: translateY(0.55rem) rotate(45deg);
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(3) {
+            transform: translateY(-0.55rem) rotate(-45deg);
+        }
+
+        .nav-links.open {
+            display: flex;
+        }
+
         .nav-links a:hover {
             color: #FF4081;
         }
@@ -829,6 +878,36 @@
 
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                right: 2rem;
+                flex-direction: column;
+                gap: 1rem;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1.5rem;
+                border-radius: 1rem;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+                min-width: min(220px, calc(100vw - 3rem));
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .nav-links a {
+                display: block;
+            }
+
+            .nav-container {
+                position: relative;
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.35rem;
             }
 
             .section-title {
@@ -847,7 +926,18 @@
     <nav>
         <div class="nav-container">
             <div class="logo">StampCircle</div>
-            <ul class="nav-links">
+            <button
+                type="button"
+                class="nav-toggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="primary-navigation"
+            >
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+            </button>
+            <ul class="nav-links" id="primary-navigation">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#partners">Partners</a></li>
@@ -1183,6 +1273,40 @@
                 }
             });
         });
+
+        // Mobile navigation toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.getElementById('primary-navigation');
+
+        if (navToggle && navLinks) {
+            const toggleMenu = () => {
+                const isOpen = navLinks.classList.toggle('open');
+                navToggle.classList.toggle('active', isOpen);
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+            };
+
+            const closeMenu = () => {
+                if (!navLinks.classList.contains('open')) {
+                    return;
+                }
+
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            };
+
+            navToggle.addEventListener('click', toggleMenu);
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+        }
 
         // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(question => {
