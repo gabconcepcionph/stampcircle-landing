@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WRYQWW0C1L"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WRYQWW0C1L');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StampCircle - Digital Loyalty Platform for Small Business</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            border: none;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 100%);
+            color: white;
+            font-size: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(255, 64, 129, 0.3);
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px rgba(255, 64, 129, 0.35);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo img {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(255, 64, 129, 0.25);
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #FF4081 0%, #E91E63 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: background 0.3s ease;
+        }
+
+        .nav-toggle:focus-visible {
+            outline: 2px solid #FF4081;
+            outline-offset: 2px;
+        }
+
+        .nav-toggle:hover {
+            background: rgba(255, 64, 129, 0.1);
+        }
+
+        .nav-toggle__bar {
+            display: block;
+            width: 1.75rem;
+            height: 0.2rem;
+            background: #333;
+            border-radius: 999px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-origin: center;
+        }
+
+        .nav-toggle__bar + .nav-toggle__bar {
+            margin-top: 0.35rem;
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(1) {
+            transform: translateY(0.55rem) rotate(45deg);
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(3) {
+            transform: translateY(-0.55rem) rotate(-45deg);
+        }
+
+        .nav-links.open {
+            display: flex;
+        }
+
+        .nav-links a:hover {
+            color: #FF4081;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 50%, #E91E63 100%);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .hero-logo {
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+            padding: 0.75rem;
+        }
+
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .hero-text {
+            max-width: 620px;
+            text-align: left;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            color: white;
+            text-decoration: none;
+            backdrop-filter: blur(6px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+            transform: translateX(-50%) translateY(4px);
+            border-color: white;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .scroll-indicator__arrow {
+            width: 0.85rem;
+            height: 0.85rem;
+            border-left: 3px solid currentColor;
+            border-bottom: 3px solid currentColor;
+            transform: rotate(-45deg);
+            animation: arrowBounce 1.5s ease-in-out infinite;
+        }
+
+        @keyframes arrowBounce {
+            0%, 100% {
+                transform: translateY(0) rotate(-45deg);
+                opacity: 0.9;
+            }
+            50% {
+                transform: translateY(6px) rotate(-45deg);
+                opacity: 0.6;
+            }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.0rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .how-it-works-link {
+            margin-top: 0.5rem;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .how-it-works-button {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-style: italic;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .how-it-works-button:hover,
+        .how-it-works-button:focus {
+            color: #ffffff;
+            outline: none;
+        }
+
+        .how-it-works-button:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 3px;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #FF4081;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #FF4081;
+            transform: translateY(-3px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(255, 64, 129, 0.15);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1100;
+        }
+
+        .modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal__content {
+            position: relative;
+            width: min(90vw, 520px);
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.5rem 2rem 2rem;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            color: #333;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal__close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            line-height: 1;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal__close:hover,
+        .modal__close:focus {
+            color: #0f172a;
+            outline: none;
+        }
+
+        .modal__close:focus-visible {
+            outline: 2px solid #0f172a;
+            outline-offset: 3px;
+        }
+
+        .modal__content h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .modal__content p {
+            margin-bottom: 1.25rem;
+            color: #475569;
+        }
+
+        .modal__list {
+            padding-left: 1.5rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .modal__section {
+            margin-bottom: 2rem;
+        }
+
+        .modal__section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .modal__section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #ff437f;
+        }
+
+        .modal__lead {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #1f2937;
+        }
+
+        .modal__subtitle {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+        }
+
+        .modal__list--numbered {
+            list-style: decimal;
+        }
+
+        .modal__list--numbered li + li {
+            margin-top: 0.75rem;
+        }
+
+        .modal__list--bullet {
+            list-style: disc;
+            margin-top: 0.75rem;
+        }
+
+        .modal__list--bullet li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal__list--check {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .modal__list--check li {
+            position: relative;
+            padding-left: 2.25rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .modal__list--check li::before {
+            content: '\2705';
+            position: absolute;
+            left: 0;
+            top: 0.15rem;
+            font-size: 1.2rem;
+        }
+
+        .modal__note {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .modal__cta {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            color: #ff437f;
+        }
+
+        .modal__cta span {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff5e78 0%, #ff4081 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .modal__actions {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .modal__close-button {
+            min-width: 160px;
+            padding: 0.85rem 1.75rem;
+            border-radius: 999px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, #ff5e78 0%, #ff4081 100%);
+            box-shadow: 0 15px 30px rgba(255, 64, 129, 0.25);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .modal__close-button:hover,
+        .modal__close-button:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px rgba(255, 64, 129, 0.35);
+            outline: none;
+        }
+
+        .modal__close-button:focus-visible {
+            outline: 2px solid rgba(255, 64, 129, 0.7);
+            outline-offset: 3px;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* Partners Section */
+        .partners {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f8fbff 0%, #fff0f7 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partners::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at top right, rgba(6, 182, 212, 0.2), transparent 55%),
+                radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.18), transparent 60%);
+            pointer-events: none;
+        }
+
+        .partners .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .partners-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 4rem;
+        }
+
+        .partners-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .partners-header p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .partners-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
+
+        .partners-card::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 4px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #06b6d4 0%, #FF4081 100%);
+            margin-bottom: 1.5rem;
+        }
+
+        .partners-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(255, 64, 129, 0.15);
+        }
+
+        .partners-card h3 {
+            font-size: 1.45rem;
+            margin-bottom: 0.75rem;
+            color: #333;
+        }
+
+        .partners-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .partners-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .partners-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem 2.75rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #06b6d4 0%, #38bdf8 100%);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .partners-cta a:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 55px rgba(6, 182, 212, 0.35);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .benefit-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .benefit-item p {
+            color: #666;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 50%, #E91E63 100%);
+            color: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #fff5f8;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #FF4081;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+            padding: 0 2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 2rem 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-header {
+                gap: 1.5rem;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-logo {
+                width: 4.5rem;
+                height: 4.5rem;
+                padding: 0.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 2rem;
+                flex-direction: column;
+                gap: 1rem;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1.5rem;
+                border-radius: 1rem;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+                min-width: min(220px, calc(100vw - 3rem));
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .nav-links a {
+                display: block;
+            }
+
+            .nav-container {
+                position: relative;
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.35rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="r1qj2SvDXhrdysLq7p1P/w" async></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <img src="https://jbkwgcdsbhyfelflxibh.supabase.co/storage/v1/object/public/assets/logo-bg%20(1).png" alt="StampCircle logo">
+                <span>StampCircle</span>
+            </a>
+            <button
+                type="button"
+                class="nav-toggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="primary-navigation"
+            >
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+            </button>
+            <ul class="nav-links" id="primary-navigation">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#partners">Partners</a></li>
+                <li><a href="use-cases.html">Use Cases</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+    <section class="about" style="padding: 6rem 2rem; background: linear-gradient(135deg, #FF5E78 0%, #FF4081 50%, #E91E63 100%); color: white;">
+        <div class="about-content">
+            <h1 class="section-title" style="font-size: 2.5rem; color:white; font-weight: 700; margin-bottom: 1.5rem;">Best Loyalty Program for Small Business: A Complete Guide to Customer Retention in 2026</h1>
+            <p style="opacity: 0.9; margin-bottom: 3rem; font-size: 1.1rem;">⏱️ 8 min read</p>
+            
+            <div style="text-align: left; max-width: 800px; margin: 0 auto; font-size: 1.2rem; line-height: 1.8;">
+                <p style="margin-bottom: 2rem; font-size: 1.3rem; line-height: 1.8; opacity: 0.95;">
+                    Customer retention is the lifeblood of small business success. While attracting new customers is important, keeping existing ones coming back is far more cost-effective—studies show that acquiring a new customer costs five times more than retaining an existing one. This is where loyalty programs shine, and finding the best loyalty program for small business operations can transform your bottom line.
+                </p>
+
+                <h2 style="font-size: 1.8rem; font-weight: 600; margin: 3rem 0 1.5rem; color: #ffeb3b;">Why Small Businesses Need Loyalty Programs</h2>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    In today's competitive marketplace, small businesses face unique challenges. Unlike large corporations with massive marketing budgets, you need to maximize every customer interaction. A well-designed loyalty program helps you:
+                </p>
+                <ul style="margin-bottom: 2.5rem; padding-left: 1.5rem; opacity: 0.95;">
+                    <li style="margin-bottom: 0.8rem;">Increase repeat purchases by 60-70%</li>
+                    <li style="margin-bottom: 0.8rem;">Boost average order value by rewarding higher spending</li>
+                    <li style="margin-bottom: 0.8rem;">Generate word-of-mouth marketing through referral incentives</li>
+                    <li style="margin-bottom: 0.8rem;">Collect valuable customer data for personalized marketing</li>
+                    <li>Build emotional connections that transcend price competition</li>
+                </ul>
+
+                <h2 style="font-size: 1.8rem; font-weight: 600; margin: 3rem 0 1.5rem; color: #ffeb3b;">What Makes a Loyalty Program Great for Small Businesses?</h2>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    The best loyalty program for small business isn't necessarily the most complex or expensive. Instead, focus on these critical factors:
+                </p>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">1. Simplicity and Ease of Use</h3>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Your customers shouldn't need a tutorial to understand how to earn and redeem rewards. The simpler the program, the higher the participation rate.
+                </p>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">2. Cost-Effectiveness</h3>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Small businesses operate on tight margins. Your loyalty program should deliver ROI without breaking the bank on setup fees, monthly subscriptions, or complex hardware.
+                </p>
+
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 0.5rem; margin: 2rem 0; border-left: 4px solid #ffeb3b;">
+                    <p style="font-style: italic; margin: 0; font-weight: 500; opacity: 0.95; font-size: 1.1rem;">
+                        "Implementing StampCircle's digital stamp program increased our repeat customer rate by 45% within the first three months. The best part? It took less than 15 minutes to set up." — Sarah K., Café Owner
+                    </p>
+                </div>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">3. Digital-First Approach</h3>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Physical punch cards are outdated and easily lost. Modern customers expect digital solutions that integrate seamlessly with their smartphones.
+                </p>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">4. Flexibility</h3>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Your program should adapt to your specific business model—whether you run a coffee shop, boutique, salon, or service business.
+                </p>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">5. Actionable Analytics</h3>
+                <p style="margin-bottom: 3rem; opacity: 0.95;">
+                    Understanding customer behavior, purchase patterns, and program effectiveness is crucial for making informed business decisions.
+                </p>
+
+                <h2 style="font-size: 1.8rem; font-weight: 600; margin: 3rem 0 1.5rem; color: #ffeb3b;">Introducing StampCircle: The Best Digital Stamp Platform for Small Businesses</h2>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    When evaluating loyalty solutions, StampCircle emerges as the ideal choice for small businesses seeking a powerful yet affordable digital stamp platform. Here's why it stands out:
+                </p>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">Digital Stamp Cards That Actually Work</h3>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    StampCircle modernizes the classic punch card concept that customers already understand and trust. Instead of carrying physical cards, customers access their digital stamp cards through their smartphones—no app download required.
+                </p>
+                <p style="margin-bottom: 1.5rem; font-weight: 600; opacity: 0.95;">How it works:</p>
+                <ol style="margin-bottom: 2rem; padding-left: 1.5rem; opacity: 0.95;">
+                    <li style="margin-bottom: 0.8rem;">Customers scan a QR code at your business</li>
+                    <li style="margin-bottom: 0.8rem;">They receive a digital stamp for each qualifying purchase</li>
+                    <li style="margin-bottom: 0.8rem;">Once they complete their card, they redeem their reward</li>
+                    <li>The cycle repeats, building lasting loyalty</li>
+                </ol>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2.5rem 0 1rem; color: white;">Key Features That Set StampCircle Apart</h3>
+                
+                <h4 style="font-size: 1.3rem; font-weight: 600; margin: 1.5rem 0 0.8rem; color: #ffeb3b;">✓ Zero Hardware Investment</h4>
+                <p style="margin-bottom: 1rem; opacity: 0.95;">
+                    Unlike traditional POS-integrated systems, StampCircle requires no expensive hardware, tablets, or scanners. A simple printed QR code is all you need to get started.
+                </p>
+
+                <h4 style="font-size: 1.3rem; font-weight: 600; margin: 1.5rem 0 0.8rem; color: #ffeb3b;">✓ No App Download Barrier</h4>
+                <p style="margin-bottom: 1rem; opacity: 0.95;">
+                    Many loyalty programs fail because customers refuse to download yet another app. StampCircle works directly through any web browser, eliminating this major friction point.
+                </p>
+
+                <h4 style="font-size: 1.3rem; font-weight: 600; margin: 1.5rem 0 0.8rem; color: #ffeb3b;">✓ Customizable Reward Structures</h4>
+                <p style="margin-bottom: 1rem; opacity: 0.95;">
+                    Set your own stamp requirements and rewards. Whether you want to offer a free coffee after 10 purchases or a discount after 5 visits, StampCircle adapts to your business model.
+                </p>
+
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 0.5rem; margin: 2rem 0; border-left: 4px solid #ffeb3b;">
+                    <h4 style="font-size: 1.3rem; margin: 0 0 1rem 0; color: white;">Case Study: Local Bakery Sees 68% Increase in Repeat Business</h4>
+                    <p style="margin: 0; opacity: 0.95;">
+                        After implementing StampCircle, Sweet Delights Bakery saw customer retention rates soar. Their "Buy 6, Get 1 Free" program now accounts for 40% of their daily transactions, with customers spending 25% more per visit to earn rewards faster.
+                    </p>
+                </div>
+
+                <h4 style="font-size: 1.3rem; font-weight: 600; margin: 1.5rem 0 0.8rem; color: #ffeb3b;">✓ Real-Time Analytics Dashboard</h4>
+                <p style="margin-bottom: 1rem; opacity: 0.95;">
+                    Track program participation, redemption rates, customer frequency, and ROI—all from an intuitive dashboard that requires no technical expertise.
+                </p>
+
+                <h4 style="font-size: 1.3rem; font-weight: 600; margin: 1.5rem 0 0.8rem; color: #ffeb3b;">✓ Branded Experience</h4>
+                <p style="margin-bottom: 1rem; opacity: 0.95;">
+                    Customize your digital stamp cards with your logo, colors, and branding to reinforce your business identity with every interaction.
+                </p>
+
+                <h4 style="font-size: 1.3rem; font-weight: 600; margin: 1.5rem 0 0.8rem; color: #ffeb3b;">✓ Multi-Location Support</h4>
+                <p style="margin-bottom: 2rem; opacity: 0.95;">
+                    Growing your business? StampCircle scales effortlessly across multiple locations while providing centralized management and reporting.
+                </p>
+
+                <h2 style="font-size: 1.8rem; font-weight: 600; margin: 3rem 0 1.5rem; color: #ffeb3b;">Implementation: Getting Started in Minutes</h2>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    One of StampCircle's biggest advantages is its simplicity. Here's your quick-start guide:
+                </p>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">Week 1: Setup</h3>
+                <ul style="margin-bottom: 2rem; padding-left: 1.5rem; opacity: 0.95;">
+                    <li style="margin-bottom: 0.8rem;">Create your account and design your digital stamp card</li>
+                    <li style="margin-bottom: 0.8rem;">Set your reward structure (e.g., "Buy 10, get 1 free")</li>
+                    <li>Print your QR code and place it at your checkout</li>
+                </ul>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">Week 2: Launch</h3>
+                <ul style="margin-bottom: 2rem; padding-left: 1.5rem; opacity: 0.95;">
+                    <li style="margin-bottom: 0.8rem;">Train staff on the simple process (takes less than 5 minutes)</li>
+                    <li style="margin-bottom: 0.8rem;">Promote your new program through social media and in-store signage</li>
+                    <li>Encourage staff to mention it during checkout</li>
+                </ul>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">Week 3+: Optimize</h3>
+                <ul style="margin-bottom: 3rem; padding-left: 1.5rem; opacity: 0.95;">
+                    <li style="margin-bottom: 0.8rem;">Monitor your dashboard analytics</li>
+                    <li style="margin-bottom: 0.8rem;">Adjust rewards based on customer response</li>
+                    <li>Send targeted promotions to engaged customers</li>
+                </ul>
+
+                <h2 style="font-size: 1.8rem; font-weight: 600; margin: 3rem 0 1.5rem; color: #ffeb3b;">Real-World Success: Small Businesses Winning with Digital Loyalty</h2>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Consider these typical scenarios where StampCircle drives measurable results:
+                </p>
+
+                <div style="background: rgba(255, 255, 255, 0.05); border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 2rem;">
+                    <h3 style="font-size: 1.4rem; color: #ffeb3b; margin-top: 0; margin-bottom: 1rem;">☕ Coffee Shop Example</h3>
+                    <p style="margin: 0; opacity: 0.95;">
+                        A local café implements a "Buy 9 coffees, get the 10th free" program. Within three months, they see a 40% increase in repeat visits and a 25% boost in revenue from program members who also purchase food items.
+                    </p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.05); border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 2rem;">
+                    <h3 style="font-size: 1.4rem; color: #ffeb3b; margin-top: 0; margin-bottom: 1rem;">👗 Retail Boutique Example</h3>
+                    <p style="margin: 0; opacity: 0.95;">
+                        A clothing store offers a stamp for every $50 spent, with a $25 reward after 10 stamps. Average customer lifetime value increases by 60% as shoppers consolidate purchases to earn rewards faster.
+                    </p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.05); border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 3rem;">
+                    <h3 style="font-size: 1.4rem; color: #ffeb3b; margin-top: 0; margin-bottom: 1rem;">✂️ Service Business Example</h3>
+                    <p style="margin: 0; opacity: 0.95;">
+                        A hair salon rewards every 6 visits with a free conditioning treatment. No-show rates decrease by 35% as clients prioritize maintaining their stamp progress.
+                    </p>
+                </div>
+
+                <h2 style="font-size: 1.8rem; font-weight: 600; margin: 3rem 0 1.5rem; color: #ffeb3b;">Maximizing Your Loyalty Program ROI</h2>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Having the best loyalty program for small business means nothing without proper execution. Follow these best practices:
+                </p>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">Communicate Clearly</h3>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Display your QR code prominently at checkout and train staff to explain the program briefly: "Scan here to start earning free [product/service]."
+                </p>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">Set Achievable Goals</h3>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Rewards should be attainable within a reasonable timeframe. If customers need 50 purchases to earn a reward, they'll lose interest.
+                </p>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">Create Urgency</h3>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Consider limited-time bonus stamp promotions: "Double stamps this weekend!" These campaigns drive immediate traffic and excitement.
+                </p>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">Personalize When Possible</h3>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Use StampCircle's customer data to send birthday rewards, re-engagement offers to lapsed customers, or VIP perks to your best customers.
+                </p>
+
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; color: white;">Promote Consistently</h3>
+                <p style="margin-bottom: 3rem; opacity: 0.95;">
+                    Regular social media posts, email reminders, and in-store signage keep your program top-of-mind.
+                </p>
+
+                <h2 style="font-size: 1.8rem; font-weight: 600; margin: 3rem 0 1.5rem; color: #ffeb3b;">Cost Comparison: Why Digital Wins</h2>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Let's break down the true cost of loyalty programs:
+                </p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 3rem;">
+                    <div style="flex: 1; min-width: 300px; background: rgba(255, 255, 255, 0.05); border-radius: 0.5rem; padding: 1.5rem;">
+                        <h3 style="font-size: 1.4rem; color: #ffeb3b; margin-top: 0; margin-bottom: 1.5rem;">Traditional Punch Cards</h3>
+                        <ul style="padding-left: 1.5rem; margin: 0; opacity: 0.95;">
+                            <li style="margin-bottom: 0.8rem;">Design and printing: $200-500 annually</li>
+                            <li style="margin-bottom: 0.8rem;">Lost cards: 30% of issued cards</li>
+                            <li style="margin-bottom: 0.8rem;">No data collection</li>
+                            <li>No customer communication channel</li>
+                        </ul>
+                        <p style="font-weight: 600; margin: 1.5rem 0 0; color: #ff6b6b;">Total value: Limited</p>
+                    </div>
+
+                    <div style="flex: 1; min-width: 300px; background: rgba(75, 181, 67, 0.1); border: 1px solid rgba(75, 181, 67, 0.3); border-radius: 0.5rem; padding: 1.5rem;">
+                        <h3 style="font-size: 1.4rem; color: #4bb543; margin-top: 0; margin-bottom: 1.5rem;">StampCircle Digital Platform</h3>
+                        <ul style="padding-left: 1.5rem; margin: 0; opacity: 0.95;">
+                            <li style="margin-bottom: 0.8rem;">Affordable monthly subscription: Starting at a fraction of traditional systems</li>
+                            <li style="margin-bottom: 0.8rem;">Zero cards lost</li>
+                            <li style="margin-bottom: 0.8rem;">Rich analytics included</li>
+                            <li style="margin-bottom: 0.8rem;">Direct customer communication</li>
+                            <li>Automated reward tracking</li>
+                        </ul>
+                        <p style="font-weight: 600; margin: 1.5rem 0 0; color: #4bb543;">Total value: Exponentially higher</p>
+                    </div>
+                </div>
+
+                <h2 style="font-size: 1.8rem; font-weight: 600; margin: 3rem 0 1.5rem; color: #ffeb3b;">Common Mistakes to Avoid</h2>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Even the best loyalty program for small business can fail with poor implementation:
+                </p>
+                <ul style="margin-bottom: 3rem; padding-left: 1.5rem; opacity: 0.95;">
+                    <li style="margin-bottom: 0.8rem;"><strong>Making it too complicated</strong> - Stick to simple "earn and redeem" structures</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>Setting unrealistic goals</strong> - Rewards should be achievable within 2-3 months of normal shopping</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>Ignoring the data</strong> - Review your analytics monthly to optimize performance</li>
+                    <li style="margin-bottom: 0.8rem;"><strong>Poor staff training</strong> - Every team member should understand and promote the program</li>
+                    <li><strong>Inconsistent promotion</strong> - Keep your program visible and top-of-mind</li>
+                </ul>
+
+                <h2 style="font-size: 1.8rem; font-weight: 600; margin: 3rem 0 1.5rem; color: #ffeb3b;">The Future of Small Business Loyalty</h2>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Digital loyalty programs like StampCircle represent the evolution of customer retention. As consumers become increasingly digital-first, businesses that embrace modern solutions will have a significant competitive advantage.
+                </p>
+                <p style="margin-bottom: 2rem; opacity: 0.95;">
+                    The best loyalty program for small business is one that:
+                </p>
+                <ul style="margin-bottom: 3rem; padding-left: 1.5rem; opacity: 0.95;">
+                    <li style="margin-bottom: 0.8rem;">Removes friction from the customer experience</li>
+                    <li style="margin-bottom: 0.8rem;">Provides measurable ROI</li>
+                    <li style="margin-bottom: 0.8rem;">Scales with your growth</li>
+                    <li style="margin-bottom: 0.8rem;">Requires minimal time investment</li>
+                    <li>Delivers actionable insights</li>
+                </ul>
+                <p style="margin-bottom: 2rem; font-size: 1.3rem; line-height: 1.8; opacity: 0.95;">
+                    StampCircle checks all these boxes while remaining accessible to businesses of any size.
+                </p>
+
+                <div style="background: rgba(75, 181, 67, 0.1); border: 1px solid rgba(75, 181, 67, 0.3); border-radius: 0.5rem; padding: 2rem; margin: 3rem 0; text-align: center;">
+                    <h2 style="font-size: 2rem; color: #4bb543; margin-top: 0; margin-bottom: 1.5rem;">Ready to Build Customer Loyalty?</h2>
+                    <p style="font-size: 1.3rem; margin-bottom: 1.5rem; opacity: 0.95;">
+                        The question isn't whether your small business needs a loyalty program—it's whether you can afford to operate without one.
+                    </p>
+                    <p style="font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.95;">
+                        With StampCircle's digital stamp platform, you can implement a professional, effective loyalty program without the traditional barriers of cost, complexity, or technical requirements.
+                    </p>
+                    <p style="font-size: 1.4rem; font-weight: 600; color: white; margin-bottom: 0;">
+                        Your customers are ready to be rewarded. Are you ready to retain them?
+                    </p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.05); border-radius: 0.5rem; padding: 2rem; margin-top: 3rem;">
+                    <h3 style="font-size: 1.5rem; color: #ffeb3b; margin-top: 0; margin-bottom: 1.5rem;">Key Takeaways</h3>
+                    <ul style="margin: 0; padding-left: 1.5rem; opacity: 0.95;">
+                        <li style="margin-bottom: 0.8rem;">Loyalty programs increase repeat purchases by 60-70% for small businesses</li>
+                        <li style="margin-bottom: 0.8rem;">Digital solutions like StampCircle eliminate the problems of physical punch cards</li>
+                        <li style="margin-bottom: 0.8rem;">The best programs are simple, cost-effective, and provide actionable data</li>
+                        <li style="margin-bottom: 0.8rem;">Quick implementation and no hardware requirements make StampCircle ideal for small businesses</li>
+                        <li>Consistent promotion and achievable rewards are critical for success</li>
+                    </ul>
+                    <p style="font-weight: 600; margin: 1.5rem 0 0; color: #ffeb3b; text-align: center; font-size: 1.2rem;">
+                        Start building customer loyalty today with StampCircle's digital stamp platform—because your best customers deserve to be rewarded, and your business deserves to grow.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="#faq" data-scroll-target="#faq">FAQ</a>
+            </div>
+            <p>&copy; 2025 StampCircle. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        const scrollToTarget = (event, selector) => {
+            const target = document.querySelector(selector);
+            if (!target) {
+                return false;
+            }
+
+            event.preventDefault();
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+            return true;
+        };
+
+        document.querySelectorAll('[data-scroll-target]').forEach(anchor => {
+            anchor.addEventListener('click', function (event) {
+                const selector = this.getAttribute('data-scroll-target');
+                if (!scrollToTarget(event, selector)) {
+                    return;
+                }
+
+                if (this.hasAttribute('href') && this.getAttribute('href').startsWith('#')) {
+                    history.replaceState(null, '', this.getAttribute('href'));
+                }
+            });
+        });
+
+        // Mobile navigation toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.getElementById('primary-navigation');
+
+        if (navToggle && navLinks) {
+            const toggleMenu = () => {
+                const isOpen = navLinks.classList.toggle('open');
+                navToggle.classList.toggle('active', isOpen);
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+            };
+
+            const closeMenu = () => {
+                if (!navLinks.classList.contains('open')) {
+                    return;
+                }
+
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            };
+
+            navToggle.addEventListener('click', toggleMenu);
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+        }
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const wasActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!wasActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Add scroll animation effect
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .benefit-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(el);
+        });
+
+        // Floating back-to-top button
+        const backToTopButton = document.getElementById('back-to-top');
+        const toggleBackToTopVisibility = () => {
+            if (window.scrollY > 400) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        };
+
+        window.addEventListener('scroll', toggleBackToTopVisibility, { passive: true });
+        toggleBackToTopVisibility();
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // How It Works modal
+        const howItWorksButton = document.getElementById('how-it-works-trigger');
+        const howItWorksButton2 = document.getElementById('how-it-works-trigger2');
+        const howItWorksModal = document.getElementById('how-it-works-modal');
+        const howItWorksCloseButton = document.getElementById('how-it-works-close');
+        const howItWorksCloseBottomButton = document.getElementById('how-it-works-close-bottom');
+
+        if (howItWorksButton && howItWorksButton2 && howItWorksModal && howItWorksCloseButton && howItWorksCloseBottomButton) {
+            const setModalVisibility = (isOpen) => {
+                howItWorksModal.classList.toggle('open', isOpen);
+                howItWorksModal.setAttribute('aria-hidden', String(!isOpen));
+                document.body.classList.toggle('modal-open', isOpen);
+            };
+
+            const handleEscape = (event) => {
+                if (event.key === 'Escape') {
+                    closeModal();
+                }
+            };
+
+            const openModal = () => {
+                setModalVisibility(true);
+                document.addEventListener('keydown', handleEscape);
+                howItWorksCloseButton.focus({ preventScroll: true });
+            };
+
+            const closeModal = () => {
+                setModalVisibility(false);
+                document.removeEventListener('keydown', handleEscape);
+                howItWorksButton.focus({ preventScroll: true });
+            };
+
+            howItWorksButton.addEventListener('click', openModal);
+            howItWorksButton2.addEventListener('click', openModal);
+            howItWorksCloseButton.addEventListener('click', closeModal);
+            howItWorksCloseBottomButton.addEventListener('click', closeModal);
+            howItWorksModal.addEventListener('click', (event) => {
+                if (event.target === howItWorksModal) {
+                    closeModal();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
