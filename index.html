@@ -914,6 +914,20 @@
         .footer-links {
             display: flex;
             justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
         }
 
         /* Navigation dropdown styles */
@@ -1582,7 +1596,7 @@
             <div class="footer-links">
                 <a href="privacy-policy.html">Privacy Policy</a>
                 <a href="terms-of-service.html">Terms of Service</a>
-                <a href="#faq" data-scroll-target="#faq">FAQ</a>
+                <a href="index.html#faq" data-scroll-target="#faq">FAQ</a>
             </div>
             <p>&copy; 2025 StampCircle. All rights reserved.</p>
         </div>
