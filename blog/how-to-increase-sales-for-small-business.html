@@ -897,65 +897,20 @@
         .footer-links {
             display: flex;
             justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
 
-        /* Navigation dropdown styles */
-        .nav-links li {
-            position: relative;
-        }
-
-        .nav-links li a {
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            display: block;
-            padding: 0.5rem 1rem;
-        }
-
-        /* Dropdown styles */
-        .dropdown-toggle::after {
-            content: '▼';
-            font-size: 0.6em;
-            margin-left: 0.5em;
-            vertical-align: middle;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: #4a5568;
-            min-width: 200px;
-            border-radius: 0.5rem;
-            padding: 0.5rem 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            z-index: 1000;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu li {
-            display: block;
-        }
-
-        .dropdown-menu a {
-            padding: 0.5rem 1.5rem;
+        .footer-links a {
             color: white;
-            transition: background-color 0.2s;
-            white-space: nowrap;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
         }
 
-        .dropdown-menu a:hover {
-            background-color: #2d3748;
-            color: #fff;
+        .footer-links a:hover {
+            opacity: 1;
         }
 
         /* Animations */
@@ -1044,7 +999,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#home" class="logo">
+            <a href="../index.html" class="logo">
                 <img src="https://jbkwgcdsbhyfelflxibh.supabase.co/storage/v1/object/public/assets/logo-bg%20(1).png" alt="StampCircle logo">
                 <span>StampCircle</span>
             </a>
@@ -1065,475 +1020,56 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#partners">Partners</a></li>
                 <li><a href="use-cases.html">Use Cases</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Blog</a>
-                    <ul class="dropdown-menu" aria-label="Blog posts">
-                        <li><a href="blog/how-to-increase-sales-for-small-business.html">How to Increase Sales for Small Business</a></li>
-                    </ul>
-                </li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
         </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-header">
-                <div class="hero-text">
-                    <h1>Digital Loyalty Made Simple</h1>
-                    <p>Replace conventional stamp cards with a modern digital platform. Boost customer loyalty, increase sales, and grow your small business with StampCircle.</p>
-                </div>
-            </div>
-            <div class="cta-buttons">
-                <a href="https://customer.stampcircle.com/" class="btn btn-primary">Customer Portal</a>
-                <a href="https://merchant.stampcircle.com/" class="btn btn-secondary">Merchant Portal</a>
-            </div>
-            <div class="how-it-works-link">
-                <button
-                    id="how-it-works-trigger"
-                    type="button"
-                    class="how-it-works-button"
-                    aria-haspopup="dialog"
-                    aria-controls="how-it-works-modal"
-                >
-                    How It Works?
-                </button>
-            </div>
-        </div>
-        <a href="#pricing" class="scroll-indicator" aria-label="Scroll to features">
-            <span class="scroll-indicator__arrow"></span>
-        </a>
-    </section>
-
-    <div
-        id="how-it-works-modal"
-        class="modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="how-it-works-title"
-        aria-hidden="true"
-    >
-        <div class="modal__content" role="document">
-            <button id="how-it-works-close" type="button" class="modal__close" aria-label="Close How It Works">&times;</button>
-            <h2 id="how-it-works-title">How StampCircle Works</h2>
-            <div class="modal__section">
-                <h3 class="modal__section-title">For Business Owners</h3>
-                <p class="modal__lead">Give stamps and reward customers in under a minute—no hassle, just results.</p>
-                <h4 class="modal__subtitle">Simple 3-Step Process:</h4>
-                <ol class="modal__list modal__list--numbered">
-                    <li>Tap the center button (QR icon) on your app's bottom navigation.</li>
-                    <li>Choose your action:
-                        <ul class="modal__list modal__list--bullet">
-                            <li><strong>Give a Stamp</strong> - Reward customers for their purchase.</li>
-                            <li><strong>Reward Redemption</strong> - Let customers redeem their earned rewards.</li>
-                        </ul>
-                    </li>
-                    <li>Scan the customer's QR code – they'll show their QR from the StampCircle app.</li>
-                </ol>
-                <p class="modal__note">That's it! Transaction complete.</p>
-            </div>
-
-            <div class="modal__section">
-                <h3 class="modal__section-title">For Customers</h3>
-                <h4 class="modal__subtitle">Earning Stamps</h4>
-                <ol class="modal__list modal__list--numbered">
-                    <li>Open your StampCircle app.</li>
-                    <li>Show your QR code to the merchant.</li>
-                    <li>Get your stamp instantly.</li>
-                </ol>
-                <h4 class="modal__subtitle">Redeeming Rewards</h4>
-                <ol class="modal__list modal__list--numbered">
-                    <li>Select the reward you want to redeem in the app.</li>
-                    <li>Show your reward QR code to the merchant.</li>
-                    <li>Enjoy your reward!</li>
-                </ol>
-            </div>
-
-            <div class="modal__section">
-                <h3 class="modal__section-title">Why StampCircle?</h3>
-                <ul class="modal__list modal__list--check">
-                    <li>Less than 1 minute per transaction.</li>
-                    <li>Zero paper waste – fully digital.</li>
-                    <li>Boost repeat orders through customer loyalty.</li>
-                    <li>Build lasting relationships with your customers.</li>
-                    <li>Increase sales with minimal effort.</li>
-                </ul>
-            </div>
-
-            <p class="modal__cta"><span>Go digital. Go StampCircle.</span></p>
-            <div class="modal__actions">
-                <button id="how-it-works-close-bottom" type="button" class="modal__close-button">Close</button>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Pricing Section -->
-    <section id="pricing" style="padding: 5rem 0; background-color: #ffffff;">
-        <div style="max-width: 1280px; margin: 0 auto; padding: 0 1rem;">
-            <div style="text-align: center; margin-bottom: 4rem;">
-                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">Simple, Fair Pricing</h2>
-                <p style="font-size: 1.125rem; color: #666; max-width: 48rem; margin: 0 auto;">
-                    Only pay for what works. No setup fees, no monthly charges, no hidden costs.
-                </p>
-            </div>
-
-            <div style="max-width: 80rem; margin: 0 auto;">
-                <!-- Main Pricing Card -->
-                <div style="background: linear-gradient(to bottom right, #ffe5ef, #ffcce0); border-radius: 1.5rem; padding: 3rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); border: 2px solid #ff99c1; margin-bottom: 2rem;">
-                    <div style="text-align: center; margin-bottom: 2rem;">
-                        <div style="display: inline-block; background: #ff4081; color: white; padding: 0.5rem 1.5rem; border-radius: 9999px; font-weight: 700; margin-bottom: 1rem;">
-                            Pay-Per-Success Model
-                        </div>
-                        <h3 style="font-size: 3rem; font-weight: 800;">
-                            <span style="color: #e91e63;">₱2.00</span>
-                            <span style="font-size: 1.5rem; color: #666;"> per repeat customer</span>
-                        </h3>
-                        <p style="font-size: 0.8rem; color: #444; font-weight: 200; font-style: italic; margin-bottom: 1rem;">
-                            * A repeat customer is counted when they earn at least 1 stamp or redeem any reward in a month. Only 1 count per customer per month, regardless of activity volume.
-                        </p>
-                        <p style="font-size: 1.25rem; color: #444; font-weight: 500;">
-                            No repeat customers? Zero bills. It's that simple.
-                        </p>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
-                        <div style="background: white; border-radius: 1rem; padding: 1.5rem; text-align: center;">
-                            <div style="font-size: 2.5rem; margin-bottom: 0.75rem; color: #4CAF50;"><i class="fas fa-rocket"></i></div>
-                            <h4 style="font-weight: 700; font-size: 1.125rem; margin-bottom: 0.5rem;">Free to Start</h4>
-                            <p style="color: #666; font-size: 0.875rem;">No setup fees, no monthly subscription, no credit card required</p>
-                        </div>
-                        <div style="background: white; border-radius: 1rem; padding: 1.5rem; text-align: center;">
-                            <div style="font-size: 2.5rem; margin-bottom: 0.75rem; color: #2196F3;"><i class="fas fa-hand-holding-usd"></i></div>
-                            <h4 style="font-weight: 700; font-size: 1.125rem; margin-bottom: 0.5rem;">Only Pay for Results</h4>
-                            <p style="color: #666; font-size: 0.875rem;">You're only charged when customers return - that's a win for you!</p>
-                        </div>
-                        <div style="background: white; border-radius: 1rem; padding: 1.5rem; text-align: center;">
-                            <div style="font-size: 2.5rem; margin-bottom: 0.75rem; color: #9C27B0;"><i class="fas fa-chart-line"></i></div>
-                            <h4 style="font-weight: 700; font-size: 1.125rem; margin-bottom: 0.5rem;">Full Transparency</h4>
-                            <p style="color: #666; font-size: 0.875rem;">Track every repeat customer in your dashboard. No surprises.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Comparison -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-                    <div style="background: #f9fafb; border-radius: 1rem; padding: 2rem;">
-                        <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">Traditional Stamp Cards</h4>
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #666;">
-                                <span style="color: #ef4444; margin-right: 0.75rem; font-size: 1.25rem;">✗</span>
-                                <span>Printing costs: ₱3-5 per card</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #666;">
-                                <span style="color: #ef4444; margin-right: 0.75rem; font-size: 1.25rem;">✗</span>
-                                <span>Customers lose or forget cards</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #666;">
-                                <span style="color: #ef4444; margin-right: 0.75rem; font-size: 1.25rem;">✗</span>
-                                <span>No tracking or analytics</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #666;">
-                                <span style="color: #ef4444; margin-right: 0.75rem; font-size: 1.25rem;">✗</span>
-                                <span>Zero marketing visibility</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #666;">
-                                <span style="color: #ef4444; margin-right: 0.75rem; font-size: 1.25rem;">✗</span>
-                                <span>Manual tracking and management</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div style="background: linear-gradient(to bottom right, #ffe5ef, #ffcce0); border-radius: 1rem; padding: 2rem; border: 2px solid #ff99c1;">
-                        <h4 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #e91e63;">StampCircle Digital</h4>
-                        <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #444;">
-                                <span style="color: #ff4081; margin-right: 0.75rem; font-size: 1.25rem; font-weight: 700;">✓</span>
-                                <span><strong>Only ₱2.00 per repeat customer</strong></span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #444;">
-                                <span style="color: #ff4081; margin-right: 0.75rem; font-size: 1.25rem; font-weight: 700;">✓</span>
-                                <span>Never lost - always on their phone</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #444;">
-                                <span style="color: #ff4081; margin-right: 0.75rem; font-size: 1.25rem; font-weight: 700;">✓</span>
-                                <span>Real-time analytics dashboard</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #444;">
-                                <span style="color: #ff4081; margin-right: 0.75rem; font-size: 1.25rem; font-weight: 700;">✓</span>
-                                <span><strong>Visible to all StampCircle users</strong></span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #444;">
-                                <span style="color: #ff4081; margin-right: 0.75rem; font-size: 1.25rem; font-weight: 700;">✓</span>
-                                <span>Fully automated - no manual work</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #444;">
-                                <span style="color: #ff4081; margin-right: 0.75rem; font-size: 1.25rem; font-weight: 700;">✓</span>
-                                <span><strong>Free business promotion to users</strong></span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div style="margin: 2rem 0;">
-                    <button
-                        id="how-it-works-trigger2"
-                        type="button"
-                        aria-haspopup="dialog"
-                        aria-controls="how-it-works-modal"
-                        style="
-                            display: block;
-                            width: 50%;
-                            padding: 1rem 2rem;
-                            font-size: 1.125rem;
-                            font-weight: 600;
-                            color: white;
-                            margin:auto;
-                            background: #FF4081;
-                            border: none;
-                            border-radius: 100px;
-                            cursor: pointer;
-                            transition: all 0.3s ease;
-                            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                        "
-                        onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 40px rgba(0, 0, 0, 0.3)'"
-                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(0, 0, 0, 0.2)'"
-                    >
-                        How It Works?
-                    </button>
-                </div>
-
-                <!-- Additional Benefits -->
-                <div style="background: #1a1a2e; color: white; border-radius: 1rem; padding: 2.5rem;">
-                    <h4 style="font-size: 1.875rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Included With Every Plan</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-                        <div>
-                            <div style="color: #ff99c1; font-weight: 700; margin-bottom: 0.5rem;">🌟 Free Promotion</div>
-                            <p style="color: #d1d5db; font-size: 0.875rem;">Your business appears in the StampCircle app - free marketing to thousands of users looking for places to visit</p>
-                        </div>
-                        <div>
-                            <div style="color: #ff99c1; font-weight: 700; margin-bottom: 0.5rem;">📱 Unlimited Staff</div>
-                            <p style="color: #d1d5db; font-size: 0.875rem;">Add as many team members as you need. Everyone can give stamps and redeem rewards</p>
-                        </div>
-                        <div>
-                            <div style="color: #ff99c1; font-weight: 700; margin-bottom: 0.5rem;">🎯 Events & Promos</div>
-                            <p style="color: #d1d5db; font-size: 0.875rem;">Create unlimited promotions, events, and special campaigns to boost engagement</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Call to Action -->
-                <div style="text-align: center; margin-top: 3rem;">
-                    <p style="color: #666; margin-bottom: 1.5rem; font-size: 1.125rem;">
-                        <strong>The math is simple:</strong> If just 5 customers return because of your loyalty program, you've paid only ₱10. 
-                        <br/>With traditional cards, you'd spend ₱15-25 on printing alone, with zero tracking or promotion.
-                    </p>
-                    <a href="https://merchant.stampcircle.com/" style="display: inline-block; padding: 1rem 3rem; font-size: 1.125rem; font-weight: 700; background: linear-gradient(to right, #ff4081, #e91e63); color: white; border-radius: 9999px; text-decoration: none; box-shadow: 0 10px 30px rgba(255, 64, 129, 0.3); transition: all 0.3s;">
-                        Start Free - Pay Only for Results
-                    </a>
-                    <p style="color: #999; font-size: 0.875rem; margin-top: 1rem;">No credit card required • Cancel anytime • No hidden fees</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2 class="section-title">Features & Benefits</h2>
-            <p class="section-subtitle">Everything you need to create a successful loyalty program for your business</p>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">☕</div>
-                    <h3>Perfect for Coffee Shops</h3>
-                    <p>Reward your regular customers with digital stamps for every purchase. No more lost or forgotten punch cards. Build lasting relationships with your coffee lovers.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">💼</div>
-                    <h3>Co-working Spaces</h3>
-                    <p>Track member visits and reward frequent users. Offer special perks for dedicated members and create a community-driven environment that keeps people coming back.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🎪</div>
-                    <h3>Events & Bazaars</h3>
-                    <p>Create time-limited stamp campaigns for special events. Drive repeat visits during your bazaar or festival with exclusive digital rewards and promotions.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🏪</div>
-                    <h3>Retail Stores</h3>
-                    <p>Increase foot traffic and boost sales with a loyalty program that works. Easy stamp redemption and reward management for any retail business.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Real-time Analytics</h3>
-                    <p>Track customer engagement, popular rewards, and stamp activity. Make data-driven decisions to optimize your loyalty program and increase revenue.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Easy to Use</h3>
-                    <p>Simple interface for both merchants and customers. Give stamps with a tap, redeem rewards instantly, and manage your entire loyalty program from your phone.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section class="benefits">
-        <div class="container">
-            <h2 class="section-title">Why Choose StampCircle?</h2>
-            <p class="section-subtitle">Join hundreds of small businesses already growing with digital loyalty</p>
-            
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <div class="benefit-number">100%</div>
-                    <h4>Digital</h4>
-                    <p>No more paper waste. Eco-friendly and always accessible on mobile devices.</p>
-                </div>
-
-                <div class="benefit-item">
-                    <div class="benefit-number">24/7</div>
-                    <h4>Always On</h4>
-                    <p>Your loyalty program works around the clock. Customers can check stamps anytime.</p>
-                </div>
-
-                <div class="benefit-item">
-                    <div class="benefit-number">∞</div>
-                    <h4>Unlimited Rewards</h4>
-                    <p>Create as many reward programs as you need. Customize for seasons, products, or events.</p>
-                </div>
-
-                <div class="benefit-item">
-                    <div class="benefit-number">⚡</div>
-                    <h4>Instant Setup</h4>
-                    <p>Get started in minutes. No complicated hardware or expensive equipment needed.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="partners" class="partners">
-        <div class="container">
-            <div class="partners-header">
-                <h2>Smart tools for event and brand partners</h2>
-                <p>
-                    Turn every visit, booth, or event into a loyalty opportunity. With StampCircle’s digital stamp tools, you can engage visitors, boost repeat customers, and track results—all in one easy dashboard.
-                </p>
-            </div>
-
-            <div class="partners-grid">
-                <div class="partners-card">
-                    <h3>Stores</h3>
-                    <p>Maintain locations, update business profiles, and keep marketing assets consistent across every store.</p>
-                </div>
-                <div class="partners-card">
-                    <h3>Store Invites Page</h3>
-                    <p>Create secure invite links for new staff, track status, and onboard teams in minutes.</p>
-                </div>
-                <div class="partners-card">
-                    <h3>Own Invoicing</h3>
-                    <p>Generate accurate invoices, download records, and stay in sync with your finance workflow.</p>
-                </div>
-                <div class="partners-card">
-                    <h3>Partners Dashboard</h3>
-                    <p>Monitor events, invites, and account health from a single control center built for partner operations.</p>
-                </div>
-            </div>
-
-            <div class="partners-cta">
-                <a href="https://partners.stampcircle.com/" target="_blank" rel="noreferrer">
-                    Visit the Partners Dashboard ↓
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <h2 class="section-title" style="color:white;">About StampCircle</h2>
-                <p>StampCircle is a digital stamp platform designed specifically for small businesses who want to build customer loyalty and drive growth. Inspired by successful programs like Starbucks Stars, we've made it simple and affordable for any business to offer a professional digital loyalty experience.</p>
-                <p>Say goodbye to lost paper cards, fading stamps, and manual tracking. StampCircle brings your loyalty program into the digital age with an intuitive platform that both you and your customers will love.</p>
-                <p>Whether you run a coffee shop, restaurant, retail store, co-working space, or organize events, StampCircle helps you reward your loyal customers and turn first-time visitors into regulars.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="faq">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">How does StampCircle work?</div>
-                    <div class="faq-answer">
-                        StampCircle replaces traditional punch cards with a digital system. Merchants give stamps to customers through the app after each purchase. Customers collect stamps and redeem them for rewards you create. It's simple, trackable, and never gets lost.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Is it suitable for my small business?</div>
-                    <div class="faq-answer">
-                        Yes! StampCircle is designed specifically for small businesses like coffee shops, restaurants, retail stores, co-working spaces, salons, and any business that wants to reward repeat customers. If you currently use punch cards or want to start a loyalty program, StampCircle is perfect for you.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Do my customers need to download an app?</div>
-                    <div class="faq-answer">
-                        Yes, customers access their stamps through the StampCircle customer portal. It's a simple web-based platform that works on any smartphone, so no complicated app store downloads are required.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Can I customize my rewards?</div>
-                    <div class="faq-answer">
-                        Absolutely! You have complete control over your rewards. Set how many stamps are needed, what rewards customers can redeem, and create special promotions or limited-time offers. Make it uniquely yours.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">How do I give stamps to customers?</div>
-                    <div class="faq-answer">
-                        It's super easy! From your merchant portal, simply scan the customer's QR code or enter their ID, and tap to give a stamp. The whole process takes just seconds at checkout.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Can I track my program's performance?</div>
-                    <div class="faq-answer">
-                        Yes! The merchant portal includes analytics showing active users, stamp activity, popular rewards, and transaction history. You'll have insights to help optimize your loyalty program.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">What if I have multiple staff members?</div>
-                    <div class="faq-answer">
-                        No problem! You can add multiple staff members to your merchant account. Each staff member can give stamps and process redemptions, making it easy to manage your loyalty program across your team.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Can I run special promotions or events?</div>
-                    <div class="faq-answer">
-                        Yes! StampCircle includes features for creating special events, time-limited promotions, and giveaways. Perfect for holidays, anniversaries, or driving traffic during slow periods.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+    <section class="about" style="padding: 6rem 2rem; background: linear-gradient(135deg, #FF5E78 0%, #FF4081 50%, #E91E63 100%); color: white;">
+        <div class="about-content">
+            <h1 class="section-title" style="font-size: 2.5rem; color:white; font-weight: 700; margin-bottom: 2rem;">How to Increase Sales for Small Business: 5 Proven Strategies</h1>
+            <p style="opacity: 0.9; margin-bottom: 3rem; font-size: 1.1rem;">⏱️ 2 min read</p>
+            
+            <div style="text-align: left; max-width: 800px; margin: 0 auto; font-size: 1.2rem; line-height: 2;">
+                <p style="margin-bottom: 2rem;">Increasing sales is the lifeblood of any small business. While there are countless marketing tactics available, the most effective strategy often lies in maximizing the value of customers you already have. Here are five proven ways to boost your small business sales starting today.</p>
+                
+                <div style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; color: white;">1. Implement a Digital Loyalty Program</h2>
+                    <p style="margin-bottom: 1.5rem; opacity: 0.95;">Customer retention is significantly more cost-effective than acquisition. A digital loyalty program rewards repeat customers and encourages them to choose your business over competitors. Unlike traditional punch cards that get lost or forgotten, digital loyalty platforms ensure your customers always have their rewards at their fingertips.</p>
+                    <div style="background: rgba(255, 255, 255, 0.15); padding: 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; border-left: 4px solid white;">
+                        <p style="font-style: italic; margin: 0; font-weight: 500; opacity: 0.95;">Pro Tip: Businesses with loyalty programs see an average 20% increase in repeat customer visits within the first six months of implementation.</p>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; color: white;">2. Create Urgency with Limited-Time Offers</h2>
+                    <p style="opacity: 0.95;">Special promotions and time-sensitive deals motivate customers to act immediately rather than postpone their purchase. Combine these offers with your loyalty program to create a powerful sales driver that rewards both new and returning customers.</p>
+                </div>
+
+                <div style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; color: white;">3. Leverage Customer Data to Personalize Experiences</h2>
+                    <p style="opacity: 0.95;">Understanding your customer's preferences and purchase history allows you to tailor recommendations and offers. Digital platforms make it easy to track customer behavior and send targeted promotions that actually convert.</p>
+                </div>
+
+                <div style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; color: white;">4. Turn One-Time Buyers into Regulars</h2>
+                    <p style="opacity: 0.95;">Focus on the customer experience from the first interaction. A seamless, rewarding experience makes customers want to return. Digital stamp programs work exceptionally well because they gamify the customer journey, making each visit feel like progress toward something valuable.</p>
+                </div>
+
+                <div style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; color: white;">5. Make It Easy for Customers to Engage</h2>
+                    <p style="opacity: 0.95;">Remove friction from the buying process. Whether it's simplifying checkout, offering multiple payment options, or making it effortless to join your loyalty program, convenience drives sales. The easier you make it for customers to do business with you, the more often they'll return.</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.15); padding: 2rem; border-radius: 0.5rem; margin-top: 3rem; border-left: 4px solid #ffeb3b;">
+                    <p style="font-size: 1.3rem; font-weight: 600; margin: 0 0 1rem 0; color: white; opacity: 0.95;">The Bottom Line</p>
+                    <p style="margin: 0; opacity: 0.95;">Small businesses that combine excellent service with smart customer retention strategies consistently outperform competitors. A digital loyalty program is one of the most effective tools to increase sales while building lasting customer relationships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
