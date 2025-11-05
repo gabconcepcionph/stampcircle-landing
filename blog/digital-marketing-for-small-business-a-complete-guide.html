@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WRYQWW0C1L"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WRYQWW0C1L');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StampCircle - Digital Loyalty Platform for Small Business</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            border: none;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 100%);
+            color: white;
+            font-size: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(255, 64, 129, 0.3);
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 45px rgba(255, 64, 129, 0.35);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo img {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(255, 64, 129, 0.25);
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #FF4081 0%, #E91E63 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: background 0.3s ease;
+        }
+
+        .nav-toggle:focus-visible {
+            outline: 2px solid #FF4081;
+            outline-offset: 2px;
+        }
+
+        .nav-toggle:hover {
+            background: rgba(255, 64, 129, 0.1);
+        }
+
+        .nav-toggle__bar {
+            display: block;
+            width: 1.75rem;
+            height: 0.2rem;
+            background: #333;
+            border-radius: 999px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-origin: center;
+        }
+
+        .nav-toggle__bar + .nav-toggle__bar {
+            margin-top: 0.35rem;
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(1) {
+            transform: translateY(0.55rem) rotate(45deg);
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(3) {
+            transform: translateY(-0.55rem) rotate(-45deg);
+        }
+
+        .nav-links.open {
+            display: flex;
+        }
+
+        .nav-links a:hover {
+            color: #FF4081;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 50%, #E91E63 100%);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .hero-logo {
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+            padding: 0.75rem;
+        }
+
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .hero-text {
+            max-width: 620px;
+            text-align: left;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            color: white;
+            text-decoration: none;
+            backdrop-filter: blur(6px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+            transform: translateX(-50%) translateY(4px);
+            border-color: white;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .scroll-indicator__arrow {
+            width: 0.85rem;
+            height: 0.85rem;
+            border-left: 3px solid currentColor;
+            border-bottom: 3px solid currentColor;
+            transform: rotate(-45deg);
+            animation: arrowBounce 1.5s ease-in-out infinite;
+        }
+
+        @keyframes arrowBounce {
+            0%, 100% {
+                transform: translateY(0) rotate(-45deg);
+                opacity: 0.9;
+            }
+            50% {
+                transform: translateY(6px) rotate(-45deg);
+                opacity: 0.6;
+            }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.0rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .how-it-works-link {
+            margin-top: 0.5rem;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .how-it-works-button {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-style: italic;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .how-it-works-button:hover,
+        .how-it-works-button:focus {
+            color: #ffffff;
+            outline: none;
+        }
+
+        .how-it-works-button:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 3px;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #FF4081;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #FF4081;
+            transform: translateY(-3px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(255, 64, 129, 0.15);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1100;
+        }
+
+        .modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal__content {
+            position: relative;
+            width: min(90vw, 520px);
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.5rem 2rem 2rem;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            color: #333;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal__close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            line-height: 1;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal__close:hover,
+        .modal__close:focus {
+            color: #0f172a;
+            outline: none;
+        }
+
+        .modal__close:focus-visible {
+            outline: 2px solid #0f172a;
+            outline-offset: 3px;
+        }
+
+        .modal__content h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .modal__content p {
+            margin-bottom: 1.25rem;
+            color: #475569;
+        }
+
+        .modal__list {
+            padding-left: 1.5rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .modal__section {
+            margin-bottom: 2rem;
+        }
+
+        .modal__section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .modal__section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #ff437f;
+        }
+
+        .modal__lead {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #1f2937;
+        }
+
+        .modal__subtitle {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+        }
+
+        .modal__list--numbered {
+            list-style: decimal;
+        }
+
+        .modal__list--numbered li + li {
+            margin-top: 0.75rem;
+        }
+
+        .modal__list--bullet {
+            list-style: disc;
+            margin-top: 0.75rem;
+        }
+
+        .modal__list--bullet li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal__list--check {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .modal__list--check li {
+            position: relative;
+            padding-left: 2.25rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .modal__list--check li::before {
+            content: '\2705';
+            position: absolute;
+            left: 0;
+            top: 0.15rem;
+            font-size: 1.2rem;
+        }
+
+        .modal__note {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .modal__cta {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            color: #ff437f;
+        }
+
+        .modal__cta span {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff5e78 0%, #ff4081 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .modal__actions {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .modal__close-button {
+            min-width: 160px;
+            padding: 0.85rem 1.75rem;
+            border-radius: 999px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, #ff5e78 0%, #ff4081 100%);
+            box-shadow: 0 15px 30px rgba(255, 64, 129, 0.25);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .modal__close-button:hover,
+        .modal__close-button:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px rgba(255, 64, 129, 0.35);
+            outline: none;
+        }
+
+        .modal__close-button:focus-visible {
+            outline: 2px solid rgba(255, 64, 129, 0.7);
+            outline-offset: 3px;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* Partners Section */
+        .partners {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f8fbff 0%, #fff0f7 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partners::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at top right, rgba(6, 182, 212, 0.2), transparent 55%),
+                radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.18), transparent 60%);
+            pointer-events: none;
+        }
+
+        .partners .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .partners-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 4rem;
+        }
+
+        .partners-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .partners-header p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .partners-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
+
+        .partners-card::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 4px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #06b6d4 0%, #FF4081 100%);
+            margin-bottom: 1.5rem;
+        }
+
+        .partners-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(255, 64, 129, 0.15);
+        }
+
+        .partners-card h3 {
+            font-size: 1.45rem;
+            margin-bottom: 0.75rem;
+            color: #333;
+        }
+
+        .partners-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .partners-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .partners-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem 2.75rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #06b6d4 0%, #38bdf8 100%);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .partners-cta a:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 55px rgba(6, 182, 212, 0.35);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .benefit-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .benefit-item p {
+            color: #666;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 50%, #E91E63 100%);
+            color: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #fff5f8;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #FF4081;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+            padding: 0 2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 2rem 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-header {
+                gap: 1.5rem;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-logo {
+                width: 4.5rem;
+                height: 4.5rem;
+                padding: 0.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 2rem;
+                flex-direction: column;
+                gap: 1rem;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1.5rem;
+                border-radius: 1rem;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+                min-width: min(220px, calc(100vw - 3rem));
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .nav-links a {
+                display: block;
+            }
+
+            .nav-container {
+                position: relative;
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.35rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="r1qj2SvDXhrdysLq7p1P/w" async></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <img src="https://jbkwgcdsbhyfelflxibh.supabase.co/storage/v1/object/public/assets/logo-bg%20(1).png" alt="StampCircle logo">
+                <span>StampCircle</span>
+            </a>
+            <button
+                type="button"
+                class="nav-toggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="primary-navigation"
+            >
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+            </button>
+            <ul class="nav-links" id="primary-navigation">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#partners">Partners</a></li>
+                <li><a href="use-cases.html">Use Cases</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+    <section class="about" style="padding: 6rem 2rem; background: linear-gradient(135deg, #FF5E78 0%, #FF4081 50%, #E91E63 100%); color: white;">
+        <div class="about-content">
+            <h1 class="section-title" style="font-size: 2.5rem; color:white; font-weight: 700; margin-bottom: 2rem;">Digital Marketing for Small Business: A Complete Guide</h1>
+            <p style="opacity: 0.9; margin-bottom: 3rem; font-size: 1.1rem;">⏱️ 5 min read</p>
+            
+            <div style="text-align: left; max-width: 800px; margin: 0 auto; font-size: 1.2rem; line-height: 2;">
+                <p style="margin-bottom: 2rem; opacity: 0.95;">In today's competitive landscape, digital marketing for small business isn't just an option—it's essential for survival and growth. With consumers spending more time online than ever, small businesses need effective strategies to reach their target audience without breaking the bank.</p>
+                
+                <div style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; color: white;">Why Digital Marketing Matters for Small Businesses</h2>
+                    <p style="margin-bottom: 1.5rem; opacity: 0.95;">Traditional marketing methods like print ads and billboards can drain your budget quickly. Digital marketing offers cost-effective alternatives that deliver measurable results. Whether you're running a local coffee shop or an online boutique, digital channels help you connect with customers where they already spend their time.</p>
+                </div>
+
+                <div style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; color: white;">Essential Digital Marketing Strategies</h2>
+                    <p style="opacity: 0.95;"><strong>Social Media Marketing</strong> remains one of the most powerful tools for small businesses. Platforms like Instagram, Facebook, and TikTok let you showcase your products, share customer testimonials, and build a loyal community—all for free.</p>
+                    
+                    <p style="opacity: 0.95; margin: 1.5rem 0;"><strong>Email Marketing</strong> delivers the highest ROI of any digital marketing channel. Building an email list allows you to communicate directly with interested customers, announce promotions, and drive repeat business.</p>
+                    
+                    <p style="opacity: 0.95;"><strong>Local SEO</strong> helps customers in your area find you online. Claiming your Google Business Profile and gathering positive reviews can significantly boost your visibility in local search results.</p>
+                </div>
+
+                <div style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; color: white;">Boosting Customer Loyalty with Digital Tools</h2>
+                    <p style="opacity: 0.95;">Customer retention is cheaper than acquisition, making loyalty programs crucial for small business success. The <strong>StampCircle Digital Stamp Platform</strong> transforms traditional punch cards into an engaging digital experience.</p>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.15); padding: 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; border-left: 4px solid white;">
+                        <p style="font-style: italic; margin: 0; font-weight: 500; opacity: 0.95;">Instead of managing paper cards that customers lose or forget, StampCircle offers a seamless digital solution where customers can collect stamps through their smartphones. This gamified approach increases repeat visits while providing valuable data about customer behavior and preferences.</p>
+                    </div>
+                    
+                    <p style="opacity: 0.95; margin-top: 1.5rem;">The platform integrates smoothly with your existing digital marketing efforts, allowing you to:</p>
+                    
+                    <ul style="margin: 1rem 0 1.5rem 2rem; opacity: 0.95;">
+                        <li style="margin-bottom: 0.75rem;">Send automated rewards notifications via email or SMS</li>
+                        <li style="margin-bottom: 0.75rem;">Track which promotions drive the most engagement</li>
+                        <li style="margin-bottom: 0.75rem;">Identify your most valuable customers for targeted campaigns</li>
+                        <li>Reduce operational costs by eliminating physical cards</li>
+                    </ul>
+                </div>
+
+                <div style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; color: white;">Getting Started with Digital Marketing</h2>
+                    <p style="opacity: 0.95;">Start small and focus on consistency. Choose one or two channels where your customers are most active. Create a content calendar to maintain regular posting. Most importantly, track your results—digital marketing's biggest advantage is its measurability.</p>
+                    
+                    <p style="opacity: 0.95; margin-top: 1.5rem;">Remember, successful digital marketing for small business doesn't require a massive budget. It requires understanding your audience, choosing the right tools, and staying committed to building relationships with your customers.</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.15); padding: 2rem; border-radius: 0.5rem; margin: 3rem 0; border-left: 4px solid #ffeb3b;">
+                    <p style="font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem 0; color: white; opacity: 0.95;">Ready to enhance your customer loyalty program?</p>
+                    <p style="margin: 0; opacity: 0.95;">StampCircle's digital stamp platform makes it easy to reward repeat customers while gathering insights that fuel your digital marketing strategy. Start building stronger customer relationships today.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="#faq" data-scroll-target="#faq">FAQ</a>
+            </div>
+            <p>&copy; 2025 StampCircle. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        const scrollToTarget = (event, selector) => {
+            const target = document.querySelector(selector);
+            if (!target) {
+                return false;
+            }
+
+            event.preventDefault();
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+            return true;
+        };
+
+        document.querySelectorAll('[data-scroll-target]').forEach(anchor => {
+            anchor.addEventListener('click', function (event) {
+                const selector = this.getAttribute('data-scroll-target');
+                if (!scrollToTarget(event, selector)) {
+                    return;
+                }
+
+                if (this.hasAttribute('href') && this.getAttribute('href').startsWith('#')) {
+                    history.replaceState(null, '', this.getAttribute('href'));
+                }
+            });
+        });
+
+        // Mobile navigation toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.getElementById('primary-navigation');
+
+        if (navToggle && navLinks) {
+            const toggleMenu = () => {
+                const isOpen = navLinks.classList.toggle('open');
+                navToggle.classList.toggle('active', isOpen);
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+            };
+
+            const closeMenu = () => {
+                if (!navLinks.classList.contains('open')) {
+                    return;
+                }
+
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            };
+
+            navToggle.addEventListener('click', toggleMenu);
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+        }
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const wasActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!wasActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Add scroll animation effect
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .benefit-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(el);
+        });
+
+        // Floating back-to-top button
+        const backToTopButton = document.getElementById('back-to-top');
+        const toggleBackToTopVisibility = () => {
+            if (window.scrollY > 400) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        };
+
+        window.addEventListener('scroll', toggleBackToTopVisibility, { passive: true });
+        toggleBackToTopVisibility();
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // How It Works modal
+        const howItWorksButton = document.getElementById('how-it-works-trigger');
+        const howItWorksButton2 = document.getElementById('how-it-works-trigger2');
+        const howItWorksModal = document.getElementById('how-it-works-modal');
+        const howItWorksCloseButton = document.getElementById('how-it-works-close');
+        const howItWorksCloseBottomButton = document.getElementById('how-it-works-close-bottom');
+
+        if (howItWorksButton && howItWorksButton2 && howItWorksModal && howItWorksCloseButton && howItWorksCloseBottomButton) {
+            const setModalVisibility = (isOpen) => {
+                howItWorksModal.classList.toggle('open', isOpen);
+                howItWorksModal.setAttribute('aria-hidden', String(!isOpen));
+                document.body.classList.toggle('modal-open', isOpen);
+            };
+
+            const handleEscape = (event) => {
+                if (event.key === 'Escape') {
+                    closeModal();
+                }
+            };
+
+            const openModal = () => {
+                setModalVisibility(true);
+                document.addEventListener('keydown', handleEscape);
+                howItWorksCloseButton.focus({ preventScroll: true });
+            };
+
+            const closeModal = () => {
+                setModalVisibility(false);
+                document.removeEventListener('keydown', handleEscape);
+                howItWorksButton.focus({ preventScroll: true });
+            };
+
+            howItWorksButton.addEventListener('click', openModal);
+            howItWorksButton2.addEventListener('click', openModal);
+            howItWorksCloseButton.addEventListener('click', closeModal);
+            howItWorksCloseBottomButton.addEventListener('click', closeModal);
+            howItWorksModal.addEventListener('click', (event) => {
+                if (event.target === howItWorksModal) {
+                    closeModal();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
