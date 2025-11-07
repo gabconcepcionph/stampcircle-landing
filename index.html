@@ -2124,6 +2124,7 @@
 
             const markCopied = () => {
                 trigger.setAttribute('data-copied', 'true');
+                alert('Email Copied to clipboard!');
                 setTimeout(() => {
                     trigger.removeAttribute('data-copied');
                 }, 2000);
