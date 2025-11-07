@@ -1729,7 +1729,7 @@
                             </span>
                             <span class="contact-floating__content">
                                 <span class="contact-floating__label">Email</span>
-                                <span class="contact-floating__value" style="font-size:0.9rem;">admin@stampcircle.com</span>
+                                <span class="contact-floating__value" style="font-size:0.9rem;" data-copy-text="admin@stampcircle.com">admin@stampcircle.com</span>
                             </span>
                         </a>
                     </div>
@@ -2114,18 +2114,18 @@
             });
         }
 
-        const copyButtons = document.querySelectorAll('.contact-floating__copy');
+        const copyTriggers = document.querySelectorAll('[data-copy-text]');
 
-        const copyTextToClipboard = async (button) => {
-            const text = button.getAttribute('data-copy-text');
+        const copyTextToClipboard = async (trigger) => {
+            const text = trigger.getAttribute('data-copy-text');
             if (!text) {
                 return;
             }
 
             const markCopied = () => {
-                button.setAttribute('data-copied', 'true');
+                trigger.setAttribute('data-copied', 'true');
                 setTimeout(() => {
-                    button.removeAttribute('data-copied');
+                    trigger.removeAttribute('data-copied');
                 }, 2000);
             };
 
@@ -2157,9 +2157,11 @@
             }
         };
 
-        copyButtons.forEach((button) => {
-            button.addEventListener('click', () => {
-                copyTextToClipboard(button);
+        copyTriggers.forEach((trigger) => {
+            trigger.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                copyTextToClipboard(trigger);
             });
         });
     </script>
