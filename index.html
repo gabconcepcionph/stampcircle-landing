@@ -168,17 +168,24 @@
             gap: 0.75rem;
         }
 
+        .contact-floating__entry {
+            display: flex;
+            align-items: stretch;
+            gap: 0.5rem;
+        }
+
         .contact-floating__link {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            text-decoration: none;
-            padding: 0.75rem;
-            border-radius: 0.75rem;
-            background: rgba(255, 255, 255, 0.85);
+            padding: 0.875rem 1rem;
+            border-radius: 0.85rem;
+            background: rgba(255, 255, 255, 0.92);
             border: 1px solid rgba(233, 30, 99, 0.15);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            color: #1f2933;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            position: relative;
+            flex: 1 1 auto;
         }
 
         .contact-floating__link:hover,
@@ -211,7 +218,7 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: #6b7280;
+            color: rgba(31, 41, 51, 0.6);
             font-weight: 600;
         }
 
@@ -219,6 +226,34 @@
             font-size: 1rem;
             font-weight: 600;
             color: #1f2933;
+        }
+
+        .contact-floating__copy {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            min-width: 2.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(233, 30, 99, 0.25);
+            background: rgba(255, 255, 255, 0.9);
+            color: #ff4081;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .contact-floating__copy:hover,
+        .contact-floating__copy:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 64, 129, 0.25);
+            border-color: rgba(233, 30, 99, 0.45);
+            outline: none;
+        }
+
+        .contact-floating__copy[data-copied="true"] {
+            background: rgba(76, 217, 100, 0.15);
+            color: #1b8f3b;
+            border-color: rgba(76, 217, 100, 0.45);
         }
 
         @media (max-width: 768px) {
@@ -230,6 +265,10 @@
             .contact-floating__panel {
                 width: calc(100vw - 2rem);
                 max-width: 22rem;
+            }
+
+            .contact-floating__entry {
+                flex-direction: row;
             }
 
             .contact-floating__fab {
@@ -1683,28 +1722,38 @@
             <p class="contact-floating__title">Stay in touch</p>
             <ul class="contact-floating__list">
                 <li>
-                    <a class="contact-floating__link" href="mailto:admin@stampcircle.com">
-                        <span class="contact-floating__icon" aria-hidden="true">
-                            <i class="fa-solid fa-envelope"></i>
-                        </span>
-                        <span class="contact-floating__content">
-                            <span class="contact-floating__label">Email</span>
-                            <span class="contact-floating__value">admin@stampcircle.com</span>
-                        </span>
-                        <span class="sr-only">Contact us via email</span>
-                    </a>
+                    <div class="contact-floating__entry">
+                        <a class="contact-floating__link" href="mailto:admin@stampcircle.com">
+                            <span class="contact-floating__icon" aria-hidden="true">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                            <span class="contact-floating__content">
+                                <span class="contact-floating__label">Email</span>
+                                <span class="contact-floating__value">admin@stampcircle.com</span>
+                            </span>
+                            <span class="sr-only">Contact us via email</span>
+                        </a>
+                        <button class="contact-floating__copy" type="button" data-copy-text="admin@stampcircle.com" aria-label="Copy email address" title="Copy email address">
+                            <i class="fa-solid fa-copy" aria-hidden="true"></i>
+                        </button>
+                    </div>
                 </li>
                 <li>
-                    <a class="contact-floating__link" href="https://wa.me/639952363371" rel="noreferrer" target="_blank">
-                        <span class="contact-floating__icon" aria-hidden="true">
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </span>
-                        <span class="contact-floating__content">
-                            <span class="contact-floating__label">WhatsApp</span>
-                            <span class="contact-floating__value">+63 995 236 3371</span>
-                        </span>
-                        <span class="sr-only">Message us on WhatsApp</span>
-                    </a>
+                    <div class="contact-floating__entry">
+                        <a class="contact-floating__link" href="https://wa.me/639952363371" rel="noreferrer" target="_blank">
+                            <span class="contact-floating__icon" aria-hidden="true">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </span>
+                            <span class="contact-floating__content">
+                                <span class="contact-floating__label">WhatsApp</span>
+                                <span class="contact-floating__value">+63 995 236 3371</span>
+                            </span>
+                            <span class="sr-only">Message us on WhatsApp</span>
+                        </a>
+                        <button class="contact-floating__copy" type="button" data-copy-text="+63 995 236 3371" aria-label="Copy WhatsApp number" title="Copy WhatsApp number">
+                            <i class="fa-solid fa-copy" aria-hidden="true"></i>
+                        </button>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -2071,6 +2120,55 @@
                 }
             });
         }
+
+        const copyButtons = document.querySelectorAll('.contact-floating__copy');
+
+        const copyTextToClipboard = async (button) => {
+            const text = button.getAttribute('data-copy-text');
+            if (!text) {
+                return;
+            }
+
+            const markCopied = () => {
+                button.setAttribute('data-copied', 'true');
+                setTimeout(() => {
+                    button.removeAttribute('data-copied');
+                }, 2000);
+            };
+
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(text);
+                    markCopied();
+                    return;
+                }
+            } catch (error) {
+                console.warn('Clipboard API failed, falling back to legacy copy method', error);
+            }
+
+            const fallbackInput = document.createElement('textarea');
+            fallbackInput.value = text;
+            fallbackInput.setAttribute('readonly', '');
+            fallbackInput.style.position = 'fixed';
+            fallbackInput.style.top = '-9999px';
+            document.body.appendChild(fallbackInput);
+            fallbackInput.select();
+
+            try {
+                document.execCommand('copy');
+                markCopied();
+            } catch (error) {
+                console.warn('Unable to copy contact detail to clipboard', error);
+            } finally {
+                document.body.removeChild(fallbackInput);
+            }
+        };
+
+        copyButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                copyTextToClipboard(button);
+            });
+        });
     </script>
 
     <style>
