@@ -1730,6 +1730,7 @@
                             <span class="contact-floating__content">
                                 <span class="contact-floating__label">Email</span>
                                 <span class="contact-floating__value" style="font-size:0.9rem;" data-copy-text="admin@stampcircle.com">admin@stampcircle.com</span>
+                                <span class="contact-floating__feedback" aria-live="polite"></span>
                             </span>
                         </a>
                     </div>
@@ -2124,7 +2125,25 @@
 
             const markCopied = () => {
                 trigger.setAttribute('data-copied', 'true');
-                alert('Email Copied to clipboard!');
+
+                const feedback = trigger.closest('.contact-floating__content')?.querySelector('.contact-floating__feedback');
+                if (feedback) {
+                    if (feedback.dataset.timeoutId) {
+                        window.clearTimeout(Number(feedback.dataset.timeoutId));
+                    }
+
+                    feedback.textContent = 'Email copied to clipboard!';
+                    feedback.classList.add('is-visible');
+
+                    const timeoutId = window.setTimeout(() => {
+                        feedback.classList.remove('is-visible');
+                        feedback.textContent = '';
+                        delete feedback.dataset.timeoutId;
+                    }, 2000);
+
+                    feedback.dataset.timeoutId = String(timeoutId);
+                }
+
                 setTimeout(() => {
                     trigger.removeAttribute('data-copied');
                 }, 2000);
@@ -2242,6 +2261,19 @@
             padding: 0;
             position: absolute;
             width: 1px;
+        }
+
+        .contact-floating__feedback {
+            display: block;
+            font-size: 0.75rem;
+            color: #48bb78;
+            margin-top: 0.25rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .contact-floating__feedback.is-visible {
+            opacity: 1;
         }
 
         @media (max-width: 768px) {
