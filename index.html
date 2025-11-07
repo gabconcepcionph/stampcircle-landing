@@ -1719,7 +1719,7 @@
     </section>
 
     <div class="contact-floating" data-contact-panel>
-        <div class="contact-floating__panel" id="contact-panel" aria-hidden="true">
+        <div class="contact-floating__panel" id="contact-panel" aria-hidden="true" hidden>
             <p class="contact-floating__title">Stay in touch</p>
             <ul class="contact-floating__list">
                 <li>
@@ -2091,7 +2091,38 @@
         const setContactVisibility = (shouldOpen) => {
             if (!contactContainer || !contactToggleButton || !contactPanel) return;
 
-            contactContainer.classList.toggle('is-open', shouldOpen);
+            if (shouldOpen) {
+                contactPanel.hidden = false;
+
+                requestAnimationFrame(() => {
+                    contactContainer.classList.add('is-open');
+                });
+            } else {
+                contactContainer.classList.remove('is-open');
+
+                const transitionStyles = window.getComputedStyle(contactPanel);
+                const transitionDuration = parseFloat(transitionStyles.transitionDuration) || 0;
+                const transitionDelay = parseFloat(transitionStyles.transitionDelay) || 0;
+
+                if (transitionDuration + transitionDelay === 0) {
+                    contactPanel.hidden = true;
+                } else {
+                    const hidePanelAfterTransition = (event) => {
+                        if (event.propertyName !== 'opacity') {
+                            return;
+                        }
+
+                        if (contactContainer.classList.contains('is-open')) {
+                            return;
+                        }
+
+                        contactPanel.hidden = true;
+                    };
+
+                    contactPanel.addEventListener('transitionend', hidePanelAfterTransition, { once: true });
+                }
+            }
+
             contactToggleButton.setAttribute('aria-expanded', String(shouldOpen));
             contactPanel.setAttribute('aria-hidden', String(!shouldOpen));
         };
