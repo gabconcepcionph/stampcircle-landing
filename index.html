@@ -609,12 +609,16 @@
             min-width: 140px;
             border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 14px;
-            padding: 0.85rem 1.1rem;
+            padding: 0.9rem 1.15rem;
             background: rgba(255, 255, 255, 0.14);
             color: #ffffff;
             font-size: 1.05rem;
             font-weight: 500;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
             transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
         }
 
@@ -625,6 +629,14 @@
             background: rgba(255, 255, 255, 0.2);
             box-shadow: 0 12px 30px rgba(15, 15, 15, 0.25);
             outline: none;
+        }
+
+        .hq-option-icon {
+            font-size: 1.2rem;
+        }
+
+        .hq-option-label {
+            line-height: 1.2;
         }
 
         .hq-option:active {
@@ -1507,8 +1519,14 @@
                             Do you currently have a way to track how often your customers come back or visit your store again?
                         </p>
                         <div class="hq-options">
-                            <button type="button" class="hq-option" data-next-step="2">☑️ Yes</button>
-                            <button type="button" class="hq-option" data-next-step="2">❌ Not Yet</button>
+                            <button type="button" class="hq-option" data-next-step="2">
+                                <span class="hq-option-icon" aria-hidden="true"><i class="fa-solid fa-circle-check"></i></span>
+                                <span class="hq-option-label">Yes</span>
+                            </button>
+                            <button type="button" class="hq-option" data-next-step="2">
+                                <span class="hq-option-icon" aria-hidden="true"><i class="fa-solid fa-hourglass-half"></i></span>
+                                <span class="hq-option-label">Not Yet</span>
+                            </button>
                         </div>
                     </div>
                     <div class="hq-step" data-step="2" aria-hidden="true" hidden>
@@ -1516,9 +1534,18 @@
                             How do you currently manage your loyalty program or rewards system?
                         </p>
                         <div class="hq-options">
-                            <button type="button" class="hq-option" data-next-step="3">🔘 Paper Cards</button>
-                            <button type="button" class="hq-option" data-next-step="3">🔘 Spreadsheet</button>
-                            <button type="button" class="hq-option" data-next-step="3">🔘 None Yet</button>
+                            <button type="button" class="hq-option" data-next-step="3">
+                                <span class="hq-option-icon" aria-hidden="true"><i class="fa-regular fa-id-card"></i></span>
+                                <span class="hq-option-label">Paper Cards</span>
+                            </button>
+                            <button type="button" class="hq-option" data-next-step="3">
+                                <span class="hq-option-icon" aria-hidden="true"><i class="fa-solid fa-table"></i></span>
+                                <span class="hq-option-label">Spreadsheet</span>
+                            </button>
+                            <button type="button" class="hq-option" data-next-step="3">
+                                <span class="hq-option-icon" aria-hidden="true"><i class="fa-regular fa-circle-question"></i></span>
+                                <span class="hq-option-label">None Yet</span>
+                            </button>
                         </div>
                     </div>
                     <div class="hq-step" data-step="3" aria-hidden="true" hidden>
