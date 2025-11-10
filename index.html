@@ -534,6 +534,148 @@
             animation: fadeInUp 0.8s ease-out 0.4s backwards;
         }
 
+        .hero-questionnaire {
+            margin: 0 auto 1.75rem;
+            padding: 1.75rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 48px rgba(15, 15, 15, 0.18);
+            max-width: 620px;
+            text-align: left;
+        }
+
+        .hero-questionnaire.is-complete {
+            border-color: rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .hq-progress {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1rem;
+        }
+
+        .hq-progress-status {
+            font-weight: 600;
+            display: inline-flex;
+            gap: 0.4rem;
+            align-items: center;
+        }
+
+        .hq-progress-ellipsis {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.35em;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero-questionnaire.is-complete .hq-progress-ellipsis {
+            color: #2dd4bf;
+            transform: scale(1.1);
+        }
+
+        .hq-step {
+            display: none;
+        }
+
+        .hq-step.is-active {
+            display: block;
+        }
+
+        .hq-question {
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+            color: #ffffff;
+        }
+
+        .hq-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .hq-option {
+            flex: 1 1 calc(50% - 0.75rem);
+            min-width: 140px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 14px;
+            padding: 0.85rem 1.1rem;
+            background: rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .hq-option:hover,
+        .hq-option:focus-visible {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 30px rgba(15, 15, 15, 0.25);
+            outline: none;
+        }
+
+        .hq-option:active {
+            transform: translateY(0);
+        }
+
+        .hq-dropdown {
+            display: block;
+        }
+
+        .hq-dropdown-select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.16);
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 500;
+            appearance: none;
+            line-height: 1.4;
+            transition: border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .hq-dropdown-select:focus-visible {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.22);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
+        }
+
+        .hq-complete-message {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        @media (max-width: 620px) {
+            .hero-questionnaire {
+                padding: 1.35rem;
+            }
+
+            .hq-question {
+                font-size: 1.05rem;
+            }
+
+            .hq-option {
+                flex: 1 1 100%;
+            }
+        }
+
         .how-it-works-link {
             margin-top: 0.5rem;
             text-align: center;
@@ -1336,6 +1478,61 @@
                     <p>We'll help you build loyal, repeat customers—pay only when we deliver results. No repeat customers? No fees. Start growing your business today.</p>
                 </div>
             </div>
+            <div
+                class="hero-questionnaire"
+                data-hero-questionnaire
+                data-total-steps="3"
+                aria-labelledby="hero-questionnaire-title"
+                role="group"
+            >
+                <div class="hq-progress" aria-live="polite">
+                    <span class="hq-progress-status">
+                        <span>Step</span>
+                        <span data-current-step>1</span>
+                        <span>/</span>
+                        <span data-total-steps>3</span>
+                    </span>
+                    <span class="hq-progress-ellipsis" data-progress-ellipsis aria-hidden="true">...</span>
+                </div>
+                <div class="hq-steps">
+                    <div class="hq-step is-active" data-step="1" aria-hidden="false">
+                        <p class="hq-question" id="hero-questionnaire-title">
+                            Do you currently have a way to track how often your customers come back or visit your store again?
+                        </p>
+                        <div class="hq-options">
+                            <button type="button" class="hq-option" data-next-step="2">☑️ Yes</button>
+                            <button type="button" class="hq-option" data-next-step="2">❌ Not Yet</button>
+                        </div>
+                    </div>
+                    <div class="hq-step" data-step="2" aria-hidden="true" hidden>
+                        <p class="hq-question">
+                            How do you currently manage your loyalty program or rewards system?
+                        </p>
+                        <div class="hq-options">
+                            <button type="button" class="hq-option" data-next-step="3">🔘 Paper Cards</button>
+                            <button type="button" class="hq-option" data-next-step="3">🔘 Spreadsheet</button>
+                            <button type="button" class="hq-option" data-next-step="3">🔘 None Yet</button>
+                        </div>
+                    </div>
+                    <div class="hq-step" data-step="3" aria-hidden="true" hidden>
+                        <p class="hq-question">
+                            Average number of repeat customers every month:
+                        </p>
+                        <div class="hq-dropdown">
+                            <select class="hq-dropdown-select" data-complete-step aria-label="Average number of repeat customers every month">
+                                <option value="" selected disabled>Select a range</option>
+                                <option value="0-20">0–20</option>
+                                <option value="21-50">21–50</option>
+                                <option value="51-100">51–100</option>
+                                <option value="100+">100+</option>
+                            </select>
+                        </div>
+                        <p class="hq-complete-message" data-complete-message hidden>
+                            Thanks! Let's tailor a loyalty plan that fits your customers. Explore the portals below to continue.
+                        </p>
+                    </div>
+                </div>
+            </div>
             <div class="cta-buttons">
                 <a href="https://customer.stampcircle.com/" class="btn btn-primary">Customer Portal (free)</a>
                 <a href="https://merchant.stampcircle.com/" class="btn btn-secondary">Business Portal</a>
@@ -2026,6 +2223,102 @@
                 }
             });
         });
+
+        const heroQuestionnaire = document.querySelector('[data-hero-questionnaire]');
+        if (heroQuestionnaire) {
+            const stepElements = Array.from(heroQuestionnaire.querySelectorAll('.hq-step'));
+            const progressCurrent = heroQuestionnaire.querySelector('[data-current-step]');
+            const progressTotal = heroQuestionnaire.querySelector('[data-total-steps]');
+            const ellipsis = heroQuestionnaire.querySelector('[data-progress-ellipsis]');
+            const completeMessage = heroQuestionnaire.querySelector('[data-complete-message]');
+            const totalSteps = Number(heroQuestionnaire.dataset.totalSteps) || stepElements.length || 1;
+            const stepNumbers = stepElements
+                .map((step) => Number(step.dataset.step))
+                .filter((stepNumber) => Number.isFinite(stepNumber))
+                .sort((a, b) => a - b);
+
+            if (progressTotal) {
+                progressTotal.textContent = String(totalSteps);
+            }
+
+            if (ellipsis && !ellipsis.dataset.defaultValue) {
+                ellipsis.dataset.defaultValue = ellipsis.textContent ?? '...';
+            }
+
+            const setStepVisibility = (currentStep) => {
+                stepElements.forEach((stepElement) => {
+                    const stepValue = Number(stepElement.dataset.step);
+                    const isActive = stepValue === currentStep;
+                    if (isActive) {
+                        stepElement.classList.add('is-active');
+                        stepElement.removeAttribute('hidden');
+                        stepElement.setAttribute('aria-hidden', 'false');
+                    } else {
+                        stepElement.classList.remove('is-active');
+                        stepElement.setAttribute('hidden', '');
+                        stepElement.setAttribute('aria-hidden', 'true');
+                    }
+                });
+
+                if (progressCurrent) {
+                    progressCurrent.textContent = String(currentStep);
+                }
+
+                if (ellipsis) {
+                    const isComplete = currentStep > Math.max(...stepNumbers);
+                    if (isComplete) {
+                        ellipsis.textContent = '✔';
+                    } else {
+                        ellipsis.textContent = ellipsis.dataset.defaultValue ?? '...';
+                    }
+                }
+            };
+
+            const markComplete = () => {
+                heroQuestionnaire.classList.add('is-complete');
+                if (ellipsis) {
+                    ellipsis.textContent = '✔';
+                }
+
+                if (completeMessage) {
+                    completeMessage.hidden = false;
+                }
+            };
+
+            const goToStep = (nextStep) => {
+                if (stepNumbers.includes(nextStep)) {
+                    setStepVisibility(nextStep);
+                } else {
+                    markComplete();
+                }
+            };
+
+            heroQuestionnaire.addEventListener('click', (event) => {
+                const target = event.target;
+                if (!(target instanceof HTMLElement)) {
+                    return;
+                }
+
+                const nextStep = target.dataset.nextStep ? Number(target.dataset.nextStep) : NaN;
+                if (Number.isNaN(nextStep)) {
+                    return;
+                }
+
+                goToStep(nextStep);
+            });
+
+            const dropdown = heroQuestionnaire.querySelector('[data-complete-step]');
+            if (dropdown instanceof HTMLSelectElement) {
+                dropdown.addEventListener('change', () => {
+                    if (dropdown.value) {
+                        markComplete();
+                    }
+                });
+            }
+
+            // Initialize default state
+            setStepVisibility(stepNumbers[0] ?? 1);
+        }
 
         // Add scroll animation effect
         const observerOptions = {
