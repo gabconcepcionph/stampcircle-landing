@@ -52,6 +52,7 @@
         }
 
         .back-to-top {
+            display: none;
             position: fixed;
             bottom: 2rem;
             right: 2rem;
@@ -115,14 +116,13 @@
             width: 3.5rem;
             height: 3.5rem;
             border-radius: 9999px;
-            border: none;
+            border: 1px solid #fff;
             background: linear-gradient(135deg, #FF5E78 0%, #FF4081 100%);
             color: #fff;
             font-size: 1.4rem;
             box-shadow: 0 12px 35px rgba(255, 64, 129, 0.35);
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: -8rem;
         }
 
         .contact-floating__fab:hover,
@@ -309,7 +309,7 @@
             }
 
             .contact-floating__fab {
-                margin-bottom: 5rem;
+                margin-bottom: 0rem;
                 margin-right: 1rem;
             }
         }
@@ -2449,7 +2449,7 @@
         const backToTopButton = document.getElementById('back-to-top');
         const toggleBackToTopVisibility = () => {
             if (window.scrollY > 400) {
-                backToTopButton.classList.add('show');
+                //backToTopButton.classList.add('show');
             } else {
                 backToTopButton.classList.remove('show');
             }
