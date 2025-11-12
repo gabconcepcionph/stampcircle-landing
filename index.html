@@ -229,6 +229,38 @@
             color: #1f2933;
         }
 
+        .contact-floating__social-links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-floating__social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 0.65rem;
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 100%);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(255, 64, 129, 0.25);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+        }
+
+        .contact-floating__social-link:hover,
+        .contact-floating__social-link:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255, 64, 129, 0.35);
+            outline: none;
+        }
+
+        .contact-floating__social-link i {
+            font-size: 1.1rem;
+        }
+
         .contact-floating__copy {
             display: inline-flex;
             align-items: center;
@@ -2024,6 +2056,23 @@
                             </span>
                             <span class="sr-only">Open the StampCircle merchant portal</span>
                         </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="contact-floating__entry">
+                        <span class="contact-floating__content">
+                            <span class="contact-floating__value contact-floating__social-links" role="group" aria-label="StampCircle social media">
+                                <a class="contact-floating__social-link" href="https://www.instagram.com/stamp.circle/" rel="noreferrer" target="_blank" aria-label="Instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <a class="contact-floating__social-link" href="https://www.facebook.com/stampcirclecom/" rel="noreferrer" target="_blank" aria-label="Facebook">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                                <a class="contact-floating__social-link" href="https://www.linkedin.com/company/stampcircle/" rel="noreferrer" target="_blank" aria-label="LinkedIn">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                            </span>
+                        </span>
                     </div>
                 </li>
             </ul>
