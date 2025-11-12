@@ -732,20 +732,58 @@
                 flex: 1 1 100%;
             }
         }
-        .modal__table {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            align-items: flex-start;
+        .modal__tabs {
+            margin-bottom: 2rem;
         }
 
-        .modal__table .modal__section {
-            height: 100%;
+        .modal__tablist {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal__tab-button {
+            appearance: none;
+            border: 1px solid rgba(243, 65, 105, 0.25);
+            background: rgba(255, 245, 248, 0.9);
+            color: #e91e63;
+            border-radius: 9999px;
+            padding: 0.65rem 1.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.01em;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .modal__tab-button:hover,
+        .modal__tab-button:focus-visible {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 24px rgba(233, 30, 99, 0.18);
+            outline: none;
+            border-color: rgba(233, 30, 99, 0.45);
+            background: #ffe5ef;
+        }
+
+        .modal__tab-button[aria-selected="true"] {
+            background: linear-gradient(135deg, #ff5e78 0%, #ff4081 100%);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 15px 35px rgba(255, 64, 129, 0.25);
+        }
+
+        .modal__tab-panel {
+            display: none;
             background: #fff;
             border-radius: 1rem;
             padding: 1.75rem;
             box-shadow: 0 20px 40px rgba(17, 24, 39, 0.12);
             border: 1px solid rgba(243, 65, 105, 0.12);
+        }
+
+        .modal__tab-panel.is-active {
+            display: block;
         }
 
         #how-it-works-modal .modal__section img {
@@ -1655,8 +1693,38 @@
         <div class="modal__content" role="document">
             <button id="how-it-works-close" type="button" class="modal__close" aria-label="Close How It Works">&times;</button>
             <h2 id="how-it-works-title">How StampCircle Works</h2>
-            <div class="modal__table">
-                <div class="modal__section">
+            <div class="modal__tabs">
+                <div class="modal__tablist" role="tablist" aria-label="How it works views">
+                    <button
+                        class="modal__tab-button"
+                        type="button"
+                        role="tab"
+                        id="modal-tab-business"
+                        aria-selected="true"
+                        aria-controls="modal-panel-business"
+                        tabindex="0"
+                    >
+                        For Business Owners
+                    </button>
+                    <button
+                        class="modal__tab-button"
+                        type="button"
+                        role="tab"
+                        id="modal-tab-customers"
+                        aria-selected="false"
+                        aria-controls="modal-panel-customers"
+                        tabindex="-1"
+                    >
+                        For Customers
+                    </button>
+                </div>
+
+                <div
+                    class="modal__tab-panel is-active"
+                    role="tabpanel"
+                    id="modal-panel-business"
+                    aria-labelledby="modal-tab-business"
+                >
                     <h3 class="modal__section-title">For Business Owners</h3>
                     <p class="modal__lead">Give stamps and reward customers in under a minute—no hassle, just results.</p>
                     <h4 class="modal__subtitle">Simple 3-Step Process:</h4>
@@ -1686,7 +1754,12 @@
                     <p class="modal__note">That's it! Transaction complete.</p>
                 </div>
 
-                <div class="modal__section">
+                <div
+                    class="modal__tab-panel"
+                    role="tabpanel"
+                    id="modal-panel-customers"
+                    aria-labelledby="modal-tab-customers"
+                >
                     <h3 class="modal__section-title">For Customers</h3>
                     <h4 class="modal__subtitle">Earning Stamps</h4>
                     <ol class="modal__list modal__list--numbered">
@@ -2553,6 +2626,77 @@
                     closeModal();
                 }
             });
+        }
+
+        const howItWorksTabs = Array.from(document.querySelectorAll('.modal__tab-button'));
+        const howItWorksPanels = Array.from(document.querySelectorAll('.modal__tab-panel'));
+
+        if (howItWorksTabs.length && howItWorksPanels.length) {
+            const activateTab = (tab) => {
+                if (!(tab instanceof HTMLElement)) {
+                    return;
+                }
+
+                const targetPanelId = tab.getAttribute('aria-controls');
+
+                howItWorksTabs.forEach((button) => {
+                    const isSelected = button === tab;
+                    button.setAttribute('aria-selected', String(isSelected));
+                    button.tabIndex = isSelected ? 0 : -1;
+                });
+
+                howItWorksPanels.forEach((panel) => {
+                    const isActive = panel.id === targetPanelId;
+                    panel.classList.toggle('is-active', isActive);
+                    panel.setAttribute('aria-hidden', String(!isActive));
+                    if (isActive) {
+                        panel.removeAttribute('hidden');
+                    } else {
+                        panel.setAttribute('hidden', '');
+                    }
+                });
+            };
+
+            const focusTabAtIndex = (index) => {
+                const boundedIndex = (index + howItWorksTabs.length) % howItWorksTabs.length;
+                const tab = howItWorksTabs[boundedIndex];
+                activateTab(tab);
+                tab.focus({ preventScroll: true });
+            };
+
+            howItWorksTabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => activateTab(tab));
+
+                tab.addEventListener('keydown', (event) => {
+                    switch (event.key) {
+                        case 'ArrowRight':
+                        case 'ArrowDown':
+                            event.preventDefault();
+                            focusTabAtIndex(index + 1);
+                            break;
+                        case 'ArrowLeft':
+                        case 'ArrowUp':
+                            event.preventDefault();
+                            focusTabAtIndex(index - 1);
+                            break;
+                        case 'Home':
+                            event.preventDefault();
+                            focusTabAtIndex(0);
+                            break;
+                        case 'End':
+                            event.preventDefault();
+                            focusTabAtIndex(howItWorksTabs.length - 1);
+                            break;
+                        default:
+                            break;
+                    }
+                });
+            });
+
+            const initialTab = howItWorksTabs.find((tab) => tab.getAttribute('aria-selected') === 'true') ?? howItWorksTabs[0];
+            if (initialTab) {
+                activateTab(initialTab);
+            }
         }
 
         // Floating contact panel toggle
