@@ -1829,7 +1829,7 @@
                             Pay-Per-Success Model
                         </div>
                         <h3 style="font-size: 3rem; font-weight: 800;">
-                            <span style="color: #e91e63;text-decoration: line-through;">₱10.00</span>
+                            <span data-price="repeat-customer" style="color: #e91e63;"></span>
                             <span style="font-size: 1.5rem; color: #666;"> per repeat customer</span>
                         </h3>
                         <p style="font-size: 0.8rem; color: #444; font-weight: 200; font-style: italic; margin-bottom: 1rem;">
@@ -1906,7 +1906,7 @@
                             </li>
                             <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #444;">
                                 <span style="color: #ff4081; margin-right: 0.75rem; font-size: 1.25rem; font-weight: 700;">✓</span>
-                                <span><strong>Only ₱10.00 per repeat customer</strong></span>
+                                <span><strong>Only <span data-price="repeat-customer"></span> per repeat customer</strong></span>
                             </li>
                             <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #444;">
                                 <span style="color: #ff4081; margin-right: 0.75rem; font-size: 1.25rem; font-weight: 700;">✓</span>
@@ -2288,6 +2288,28 @@
     </footer>
 
     <script>
+        const pricingConfig = {
+            'repeat-customer': 2
+        };
+
+        const priceElements = document.querySelectorAll('[data-price]');
+        if (priceElements.length) {
+            const formatter = new Intl.NumberFormat('en-PH', {
+                style: 'currency',
+                currency: 'PHP',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+
+            priceElements.forEach((element) => {
+                const priceKey = element.getAttribute('data-price');
+                const priceValue = pricingConfig[priceKey];
+                if (typeof priceValue === 'number') {
+                    element.textContent = formatter.format(priceValue);
+                }
+            });
+        }
+
         // Smooth scrolling for navigation links
         const scrollToTarget = (event, selector) => {
             const target = document.querySelector(selector);
