@@ -1963,72 +1963,100 @@
                 <!-- Additional Benefits -->
                 <div style="background: #1a1a2e; color: white; border-radius: 1rem; padding: 2.5rem;">
                     <h4 style="font-size: 1.875rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Included With Every Plan</h4>
-                    <!-- Business Dashboard Thumbnails -->
-                    <div style="margin-bottom: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem;">
-                        <a
-                            href="business/daily.jpg"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style="display: block; border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(148, 163, 184, 0.3); background: #020617;"
-                        >
-                            <img
-                                src="business/daily.jpg"
-                                alt="Daily performance dashboard"
-                                style="width: 100%; height: 160px; object-fit: cover; display: block;"
-                            />
-                        </a>
 
-                        <a
-                            href="business/daily2.jpg"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style="display: block; border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(148, 163, 184, 0.3); background: #020617;"
-                        >
-                            <img
-                                src="business/daily2.jpg"
-                                alt="Daily performance detail view"
-                                style="width: 100%; height: 160px; object-fit: cover; display: block;"
-                            />
-                        </a>
+                    <!-- Business Dashboard Thumbnails with alternating layout -->
+                    <div style="margin-bottom: 2rem; display: flex; flex-direction: column; gap: 1.75rem;">
+                        <!-- Row 1: image left, text right -->
+                        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem;">
+                            <a
+                                href="business/daily.jpg"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style="flex: 1 1 260px; max-width: 380px; display: block; border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(148, 163, 184, 0.3); background: #020617;"
+                            >
+                                <img
+                                    src="business/daily.jpg"
+                                    alt="Daily performance dashboard"
+                                    style="width: 100%; height: 180px; object-fit: cover; display: block;"
+                                />
+                            </a>
+                            <div style="flex: 1 1 260px; color: #e5e7eb; font-size: 0.9rem;">
+                                <h5 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem;">Realtime Stamps and Redemptions tracking</h5>
+                                <p style="margin: 0; color: #cbd5f5; font-size: 0.85rem; line-height: 1.4;">
+                                    See every stamp given and reward redeemed as it happens so you can monitor peak hours,
+                                    track campaign performance, and quickly spot changes in customer activity.
+                                </p>
+                            </div>
+                        </div>
 
-                        <a
-                            href="business/redemptions.jpg"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style="display: block; border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(148, 163, 184, 0.3); background: #020617;"
-                        >
-                            <img
-                                src="business/redemptions.jpg"
-                                alt="Redemptions logs screen"
-                                style="width: 100%; height: 160px; object-fit: cover; display: block;"
-                            />
-                        </a>
+                        <!-- Row 2: text left, image right -->
+                        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem;">
+                            <div style="flex: 1 1 260px; color: #e5e7eb; font-size: 0.9rem;">
+                                <h5 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem;">Loyal Customer Dashboard - display overview of realtime stamps and redemptiosn in your store</h5>
+                                <p style="margin: 0; color: #cbd5f5; font-size: 0.85rem; line-height: 1.4;">
+                                    Understand how often your best customers visit, how many stamps they earn, and how
+                                    frequently they redeem rewards with a clear dashboard view.
+                                </p>
+                            </div>
+                            <a
+                                href="business/daily2.jpg"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style="flex: 1 1 260px; max-width: 380px; display: block; border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(148, 163, 184, 0.3); background: #020617;"
+                            >
+                                <img
+                                    src="business/daily2.jpg"
+                                    alt="Daily performance detail view"
+                                    style="width: 100%; height: 180px; object-fit: cover; display: block;"
+                                />
+                            </a>
+                        </div>
 
-                        <a
-                            href="business/stamps.jpg"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style="display: block; border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(148, 163, 184, 0.3); background: #020617;"
-                        >
-                            <img
-                                src="business/stamps.jpg"
-                                alt="Stamps logs screen"
-                                style="width: 100%; height: 160px; object-fit: cover; display: block;"
-                            />
-                        </a>
+                        <!-- Row 3: image left, text right -->
+                        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem;">
+                            <a
+                                href="business/redemptions.jpg"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style="flex: 1 1 260px; max-width: 380px; display: block; border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(148, 163, 184, 0.3); background: #020617;"
+                            >
+                                <img
+                                    src="business/redemptions.jpg"
+                                    alt="Redemptions logs screen"
+                                    style="width: 100%; height: 180px; object-fit: cover; display: block;"
+                                />
+                            </a>
+                            <div style="flex: 1 1 260px; color: #e5e7eb; font-size: 0.9rem;">
+                                <h5 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem;">Real time redemptions</h5>
+                                <p style="margin: 0; color: #cbd5f5; font-size: 0.85rem; line-height: 1.4;">
+                                    Track which rewards are being redeemed right now so you can see which offers are
+                                    working and adjust your loyalty campaigns fast.
+                                </p>
+                            </div>
+                        </div>
 
-                        <a
-                            href="business/top.jpg"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style="display: block; border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(148, 163, 184, 0.3); background: #020617;"
-                        >
-                            <img
-                                src="business/top.jpg"
-                                alt="Top customers screen"
-                                style="width: 100%; height: 160px; object-fit: cover; display: block;"
-                            />
-                        </a>
+                        <!-- Row 4: text left, image right -->
+                        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem;">
+                            <div style="flex: 1 1 260px; color: #e5e7eb; font-size: 0.9rem;">
+                                <h5 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem;">Real Time Stamps givent to cutomers</h5>
+                                <p style="margin: 0; color: #cbd5f5; font-size: 0.85rem; line-height: 1.4;">
+                                    Keep an eye on how many stamps your staff are issuing throughout the day so you can
+                                    identify busy periods and ensure rewards are being applied correctly.
+                                </p>
+                            </div>
+                            <a
+                                href="business/stamps.jpg"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style="flex: 1 1 260px; max-width: 380px; display: block; border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(148, 163, 184, 0.3); background: #020617;"
+                            >
+                                <img
+                                    src="business/stamps.jpg"
+                                    alt="Stamps logs screen"
+                                    style="width: 100%; height: 180px; object-fit: cover; display: block;"
+                                />
+                            </a>
+                        </div>
                     </div>
 
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
