@@ -585,18 +585,11 @@
         }
 
         [data-readmore-content] {
-            display: inline-block;
-            max-height: 0;          /* effectively no visible height when collapsed */
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(4px);
-            transition: max-height 0.7s ease, opacity 0.7s ease, transform 0.7s ease;
+            display: none;              /* no space when hidden */
         }
 
         [data-readmore-content].is-visible {
-            max-height: 500px;
-            opacity: 1;
-            transform: translateY(0);
+            display: inline;            /* inline with the sentence when visible */
         }
 
         .cta-buttons {
