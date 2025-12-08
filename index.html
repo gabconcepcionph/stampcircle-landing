@@ -568,15 +568,35 @@
             background: none;
             border: none;
             padding: 0;
-            margin-left: 0.25rem;
             color: inherit;
             font: inherit;
             cursor: pointer;
+            text-decoration: underline;
         }
 
         .hero-readmore-toggle:focus-visible {
             outline: 2px solid #ffffff;
             outline-offset: 2px;
+        }
+
+        .hero-readmore-toggle:hover {
+            text-underline-offset: 2px;
+            color: #ffe4f1;
+        }
+
+        [data-readmore-content] {
+            display: block;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: max-height 0.7s ease, opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        [data-readmore-content].is-visible {
+            max-height: 500px;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .cta-buttons {
@@ -1615,8 +1635,8 @@
                             data-readmore-toggle
                             aria-expanded="false"
                             aria-controls="hero-readmore-content"
-                        >read more...</button>
-                        <span id="hero-readmore-content" data-readmore-content hidden>
+                        >...read more</button>
+                        <span id="hero-readmore-content" data-readmore-content>
                             and see the impact firsthand. Launch your digital loyalty program today and start collecting valuable customer data from day one. No setup fees, no credit card needed—just pure potential to grow your business.
                             <span class="hero-readmore-extra">
                                 Within your first week, you'll discover which customers are most likely to return, what times they visit, and which rewards drive the most engagement. Business owners typically see measurable improvements in repeat visits before their trial even ends. Find out why switching from paper cards—or starting fresh with loyalty rewards—is the smartest move you'll make this year.
@@ -2463,8 +2483,13 @@
                 const nextState = !isExpanded;
 
                 heroReadmoreToggle.setAttribute('aria-expanded', String(nextState));
-                heroReadmoreContent.hidden = !nextState;
-                heroReadmoreToggle.textContent = nextState ? '' : 'read more...';
+                heroReadmoreToggle.textContent = nextState ? '' : '...read more';
+
+                if (nextState) {
+                    heroReadmoreContent.classList.add('is-visible');
+                } else {
+                    heroReadmoreContent.classList.remove('is-visible');
+                }
             });
         }
 
