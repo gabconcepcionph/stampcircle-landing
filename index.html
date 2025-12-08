@@ -564,6 +564,21 @@
             animation: fadeInUp 0.8s ease-out 0.2s backwards;
         }
 
+        .hero-readmore-toggle {
+            background: none;
+            border: none;
+            padding: 0;
+            margin-left: 0.25rem;
+            color: inherit;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .hero-readmore-toggle:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 2px;
+        }
+
         .cta-buttons {
             display: flex;
             gap: 1.0rem;
@@ -1592,8 +1607,22 @@
                 <div class="hero-text">
                     <h1>The Loyalty Program That Pays for Itself</h1>
                     <p>Replace manual stamp cards with an automated system that increases repeat orders and cuts operational costs. Track customer behavior through powerful analytics, and only pay when you make a sale. No repeat customers? No charge.</p>
-                    <p style="font-size: medium">Try it risk-free for 7 days and see the impact firsthand. Launch your digital loyalty program today and start collecting valuable customer data from day one. No setup fees, no credit card needed—just pure potential to grow your business.</p>
-                    <p style="font-size: medium;">Within your first week, you'll discover which customers are most likely to return, what times they visit, and which rewards drive the most engagement. Business owners typically see measurable improvements in repeat visits before their trial even ends. Find out why switching from paper cards—or starting fresh with loyalty rewards—is the smartest move you'll make this year.</p>
+                    <p style="font-size: medium">
+                        Try it risk-free for 7 days
+                        <button
+                            type="button"
+                            class="hero-readmore-toggle"
+                            data-readmore-toggle
+                            aria-expanded="false"
+                            aria-controls="hero-readmore-content"
+                        >read more...</button>
+                        <span id="hero-readmore-content" data-readmore-content hidden>
+                            and see the impact firsthand. Launch your digital loyalty program today and start collecting valuable customer data from day one. No setup fees, no credit card needed—just pure potential to grow your business.
+                            <span class="hero-readmore-extra">
+                                Within your first week, you'll discover which customers are most likely to return, what times they visit, and which rewards drive the most engagement. Business owners typically see measurable improvements in repeat visits before their trial even ends. Find out why switching from paper cards—or starting fresh with loyalty rewards—is the smartest move you'll make this year.
+                            </span>
+                        </span>
+                    </p>
                 </div>
             </div>
             <div
@@ -2421,6 +2450,21 @@
                 if (typeof priceValue === 'number') {
                     element.textContent = formatter.format(priceValue);
                 }
+            });
+        }
+
+        // Hero read-more toggle
+        const heroReadmoreToggle = document.querySelector('[data-readmore-toggle]');
+        const heroReadmoreContent = document.querySelector('[data-readmore-content]');
+
+        if (heroReadmoreToggle && heroReadmoreContent) {
+            heroReadmoreToggle.addEventListener('click', () => {
+                const isExpanded = heroReadmoreToggle.getAttribute('aria-expanded') === 'true';
+                const nextState = !isExpanded;
+
+                heroReadmoreToggle.setAttribute('aria-expanded', String(nextState));
+                heroReadmoreContent.hidden = !nextState;
+                heroReadmoreToggle.textContent = nextState ? '' : 'read more...';
             });
         }
 
