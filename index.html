@@ -2478,10 +2478,43 @@
                 heroReadmoreToggle.setAttribute('aria-expanded', String(nextState));
                 heroReadmoreToggle.textContent = nextState ? '' : '...read more';
 
+                // Clear any in-progress animation
+                if (heroReadmoreContent._readmoreTimerId) {
+                    window.clearInterval(heroReadmoreContent._readmoreTimerId);
+                    heroReadmoreContent._readmoreTimerId = undefined;
+                }
+
                 if (nextState) {
+                    // On first run, capture and store the full text
+                    if (!heroReadmoreContent.dataset.fullText) {
+                        heroReadmoreContent.dataset.fullText = heroReadmoreContent.textContent.trim();
+                    }
+
+                    const fullText = heroReadmoreContent.dataset.fullText || '';
+                    const words = fullText.split(/\s+/).filter(Boolean);
+
+                    heroReadmoreContent.textContent = '';
                     heroReadmoreContent.classList.add('is-visible');
+
+                    if (!words.length) {
+                        return;
+                    }
+
+                    let index = 0;
+                    heroReadmoreContent._readmoreTimerId = window.setInterval(() => {
+                        if (index >= words.length) {
+                            window.clearInterval(heroReadmoreContent._readmoreTimerId);
+                            heroReadmoreContent._readmoreTimerId = undefined;
+                            return;
+                        }
+
+                        const prefix = index === 0 ? '' : ' ';
+                        heroReadmoreContent.textContent += prefix + words[index];
+                        index += 1;
+                    }, 60);
                 } else {
                     heroReadmoreContent.classList.remove('is-visible');
+                    heroReadmoreContent.textContent = '';
                 }
             });
         }
