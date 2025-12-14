@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WRYQWW0C1L"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WRYQWW0C1L');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Articles | StampCircle</title>
+    <meta name="description" content="Browse all StampCircle blog articles about loyalty programs, customer retention, and small business growth in the Philippines.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #111827;
+            background: #f9fafb;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(15, 23, 42, 0.08);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo img {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(255, 64, 129, 0.25);
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #FF4081 0%, #E91E63 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #FF4081;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-toggle__bar {
+            display: block;
+            width: 1.75rem;
+            height: 0.2rem;
+            background: #111827;
+            border-radius: 999px;
+        }
+
+        .nav-toggle__bar + .nav-toggle__bar {
+            margin-top: 0.35rem;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 6.5rem auto 3rem;
+            padding: 0 1.5rem 3rem;
+        }
+
+        .page-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-subtitle {
+            color: #4b5563;
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            list-style: none;
+        }
+
+        .blog-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem 1.75rem;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+            border: 1px solid rgba(148, 163, 184, 0.22);
+        }
+
+        .blog-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .blog-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+
+        .blog-card-meta {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #9ca3af;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-card-desc {
+            font-size: 0.98rem;
+            color: #4b5563;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .pagination button,
+        .pagination a {
+            min-width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.75);
+            background: #ffffff;
+            color: #374151;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        .pagination a.active {
+            background: linear-gradient(135deg, #FF5E78 0%, #FF4081 100%);
+            border-color: transparent;
+            color: #ffffff;
+        }
+
+        .pagination a:hover:not(.active),
+        .pagination button:hover:not(:disabled) {
+            background: #f3f4f6;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+
+        footer {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 2.5rem 1.5rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 960px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1.25rem 1.5rem;
+                border-radius: 0.75rem;
+                box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.35rem;
+            }
+        }
+    </style>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="yKipS9r1jh4aMGN1UCp65g" async></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://jbkwgcdsbhyfelflxibh.supabase.co/storage/v1/object/public/assets/logo-bg%20(1).png" alt="StampCircle logo">
+                <span>StampCircle</span>
+            </a>
+            <button
+                type="button"
+                class="nav-toggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="primary-navigation"
+            >
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+            </button>
+            <ul class="nav-links" id="primary-navigation">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="use-cases.html">Use Cases</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <header>
+            <h1 class="page-title">Blog Articles</h1>
+            <p class="page-subtitle">Insights on loyalty programs, customer retention, and small business growth for entrepreneurs in the Philippines.</p>
+        </header>
+
+        <ul id="blog-list" class="blog-list" aria-label="Blog posts list"></ul>
+        <nav id="pagination" class="pagination" aria-label="Pagination"></nav>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="index.html#faq">FAQ</a>
+            </div>
+            <p>&copy; 2025 StampCircle. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const posts = [
+            {
+                title: '“No App Required” Loyalty Programs: Why Filipino Customers Prefer Them',
+                href: 'blog/no-app-required-loyalty-programs-why-filipino-customers-prefer-them.html',
+                category: 'Loyalty Programs'
+            },
+            {
+                title: 'How to Increase Repeat Customers Without Spending More on Ads',
+                href: 'blog/how-to-increase-repeat-customers-without-spending-more-on-ads.html',
+                category: 'Customer Retention'
+            },
+            {
+                title: 'Paper Stamp Cards vs Digital Loyalty Programs: What Works Better for Philippine SMBs?',
+                href: 'blog/paper-stamp-cards-vs-digital-loyalty-programs-what-works-better-for-philippine-smbs.html',
+                category: 'Loyalty Programs'
+            },
+            {
+                title: 'Are Loyalty Programs Worth It for Small Businesses in the Philippines?',
+                href: 'blog/are-loyalty-programs-worth-it-for-small-businesses-in-the-philippines.html',
+                category: 'Loyalty Programs'
+            },
+            {
+                title: 'Why Small Businesses in the Philippines Struggle During January–February (And How Loyalty Programs Help)',
+                href: 'blog/why-small-businesses-in-the-philippines-struggle-january-february-and-how-loyalty-programs-help.html',
+                category: 'Loyalty Programs'
+            },
+            {
+                title: 'How to Survive Slow Season for Coffee Shops in the Philippines',
+                href: 'blog/how-to-survive-slow-season-for-coffee-shops-in-the-philippines.html',
+                category: 'Coffee Shops'
+            },
+            {
+                title: 'Best Loyalty Program for Small Business: A Complete Guide to Customer Retention 2026',
+                href: 'blog/best-loyalty-program-for-small-business-complete-guide-to-customer-retention-2026.html',
+                category: 'Customer Retention'
+            },
+            {
+                title: 'Digital Marketing for Small Business: A Complete Guide',
+                href: 'blog/digital-marketing-for-small-business-a-complete-guide.html',
+                category: 'Marketing'
+            },
+            {
+                title: 'Small Business Marketing Ideas: Boost Your Local Business Growth',
+                href: 'blog/Small-Business-Marketing-Ideas-Boost-Your-Local-Business-Growth.html',
+                category: 'Marketing'
+            },
+            {
+                title: 'How to Increase Sales for Small Business',
+                href: 'blog/how-to-increase-sales-for-small-business.html',
+                category: 'Sales'
+            },
+            {
+                title: 'Social Media Marketing for Small Businesses: Complete Guide to Growing Your Brand Online',
+                href: 'blog/social-media-marketing-for-small-businesses-complete-guide-to-growing-your-brand-online.html',
+                category: 'Marketing'
+            }
+        ];
+
+        const PAGE_SIZE = 5;
+
+        function getCurrentPage() {
+            const params = new URLSearchParams(window.location.search);
+            const page = parseInt(params.get('page') || '1', 10);
+            return Number.isNaN(page) || page < 1 ? 1 : page;
+        }
+
+        function renderPosts(page) {
+            const listEl = document.getElementById('blog-list');
+            listEl.innerHTML = '';
+
+            const start = (page - 1) * PAGE_SIZE;
+            const pageItems = posts.slice(start, start + PAGE_SIZE);
+
+            pageItems.forEach(post => {
+                const li = document.createElement('li');
+                li.className = 'blog-card';
+                li.innerHTML = `
+                    <a href="${post.href}">
+                        <div class="blog-card-title">${post.title}</div>
+                        <div class="blog-card-meta">${post.category}</div>
+                        <p class="blog-card-desc">Read this article</p>
+                    </a>
+                `;
+                listEl.appendChild(li);
+            });
+        }
+
+        function renderPagination(page) {
+            const totalPages = Math.ceil(posts.length / PAGE_SIZE) || 1;
+            const paginationEl = document.getElementById('pagination');
+            paginationEl.innerHTML = '';
+
+            const createLink = (label, targetPage, disabled = false, isActive = false) => {
+                if (disabled) {
+                    const btn = document.createElement('button');
+                    btn.textContent = label;
+                    btn.disabled = true;
+                    paginationEl.appendChild(btn);
+                    return;
+                }
+
+                const a = document.createElement('a');
+                a.textContent = label;
+                a.href = `blogs.html?page=${targetPage}`;
+                if (isActive) {
+                    a.classList.add('active');
+                }
+                paginationEl.appendChild(a);
+            };
+
+            createLink('«', page - 1, page === 1);
+
+            for (let p = 1; p <= totalPages; p++) {
+                createLink(String(p), p, false, p === page);
+            }
+
+            createLink('»', page + 1, page === totalPages);
+        }
+
+        function initPage() {
+            const page = getCurrentPage();
+            const totalPages = Math.ceil(posts.length / PAGE_SIZE) || 1;
+            const current = Math.min(page, totalPages);
+            renderPosts(current);
+            renderPagination(current);
+        }
+
+        // Mobile nav toggle
+        (function () {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.getElementById('primary-navigation');
+            if (!navToggle || !navLinks) return;
+
+            const toggleMenu = () => {
+                const isOpen = navLinks.classList.toggle('open');
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+            };
+
+            navToggle.addEventListener('click', toggleMenu);
+        })();
+
+        initPage();
+    </script>
+</body>
+</html>
