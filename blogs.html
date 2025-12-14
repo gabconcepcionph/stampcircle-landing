@@ -171,7 +171,7 @@
             z-index: -1;
         }
 
-        .blog-card:hover {
+        .blog-card {
             transform: translateY(-6px);
             box-shadow: 0 15px 40px rgba(255, 64, 129, 0.18);
             border-color: rgba(248, 113, 150, 0.6);
@@ -359,57 +359,68 @@
             {
                 title: '“No App Required” Loyalty Programs: Why Filipino Customers Prefer Them',
                 href: 'blog/no-app-required-loyalty-programs-why-filipino-customers-prefer-them.html',
-                category: 'Loyalty Programs'
+                category: 'Loyalty Programs',
+                excerpt: 'Why Filipino customers increasingly prefer app-free loyalty programs that work via QR codes and digital wallets instead of installing yet another mobile app.'
             },
             {
                 title: 'How to Increase Repeat Customers Without Spending More on Ads',
                 href: 'blog/how-to-increase-repeat-customers-without-spending-more-on-ads.html',
-                category: 'Customer Retention'
+                category: 'Customer Retention',
+                excerpt: 'Learn practical ways to turn one-time buyers into loyal regulars without raising your ad budget, using loyalty rewards, follow-ups, and better customer experience.'
             },
             {
                 title: 'Paper Stamp Cards vs Digital Loyalty Programs: What Works Better for Philippine SMBs?',
                 href: 'blog/paper-stamp-cards-vs-digital-loyalty-programs-what-works-better-for-philippine-smbs.html',
-                category: 'Loyalty Programs'
+                category: 'Loyalty Programs',
+                excerpt: 'Compare traditional paper stamp cards with digital loyalty systems and see which option delivers better data, scalability, and engagement for Philippine SMBs.'
             },
             {
                 title: 'Are Loyalty Programs Worth It for Small Businesses in the Philippines?',
                 href: 'blog/are-loyalty-programs-worth-it-for-small-businesses-in-the-philippines.html',
-                category: 'Loyalty Programs'
+                category: 'Loyalty Programs',
+                excerpt: 'Find out when loyalty programs truly pay off for small businesses in the Philippines—and when they don’t—so you can design a simple, profitable rewards system.'
             },
             {
                 title: 'Why Small Businesses in the Philippines Struggle During January–February (And How Loyalty Programs Help)',
                 href: 'blog/why-small-businesses-in-the-philippines-struggle-january-february-and-how-loyalty-programs-help.html',
-                category: 'Loyalty Programs'
+                category: 'Loyalty Programs',
+                excerpt: 'Understand the January–February slow season in the Philippines and how a well-timed loyalty program can stabilize cash flow and bring customers back.'
             },
             {
                 title: 'How to Survive Slow Season for Coffee Shops in the Philippines',
                 href: 'blog/how-to-survive-slow-season-for-coffee-shops-in-the-philippines.html',
-                category: 'Coffee Shops'
+                category: 'Coffee Shops',
+                excerpt: 'Strategies for Philippine coffee shops to handle rainy months and post-holiday slumps by cutting costs smartly and driving repeat visits with digital stamps.'
             },
             {
                 title: 'Best Loyalty Program for Small Business: A Complete Guide to Customer Retention 2026',
                 href: 'blog/best-loyalty-program-for-small-business-complete-guide-to-customer-retention-2026.html',
-                category: 'Customer Retention'
+                category: 'Customer Retention',
+                excerpt: 'A deep-dive guide into modern loyalty programs for small businesses, including digital stamp cards, analytics, and real-world ROI examples for 2026.'
             },
             {
                 title: 'Digital Marketing for Small Business: A Complete Guide',
                 href: 'blog/digital-marketing-for-small-business-a-complete-guide.html',
-                category: 'Marketing'
+                category: 'Marketing',
+                excerpt: 'An end-to-end overview of digital marketing channels small businesses can use—from social to search—to reach more customers and grow online.'
             },
             {
                 title: 'Small Business Marketing Ideas: Boost Your Local Business Growth',
                 href: 'blog/Small-Business-Marketing-Ideas-Boost-Your-Local-Business-Growth.html',
-                category: 'Marketing'
+                category: 'Marketing',
+                excerpt: 'Practical, low-cost marketing ideas tailored for local businesses that want to increase visibility and foot traffic in their communities.'
             },
             {
                 title: 'How to Increase Sales for Small Business',
                 href: 'blog/how-to-increase-sales-for-small-business.html',
-                category: 'Sales'
+                category: 'Sales',
+                excerpt: 'Tactical advice for boosting small business sales, from improving offers and upsells to better customer follow-up and retention.'
             },
             {
                 title: 'Social Media Marketing for Small Businesses: Complete Guide to Growing Your Brand Online',
                 href: 'blog/social-media-marketing-for-small-businesses-complete-guide-to-growing-your-brand-online.html',
-                category: 'Marketing'
+                category: 'Marketing',
+                excerpt: 'A comprehensive guide to using social media to build your brand, attract followers, and convert them into loyal customers.'
             }
         ];
 
@@ -435,7 +446,7 @@
                     <a href="${post.href}">
                         <div class="blog-card-title">${post.title}</div>
                         <div class="blog-card-meta">${post.category}</div>
-                        <p class="blog-card-desc">Read this article</p>
+                        <p class="blog-card-desc">${post.excerpt}</p>
                     </a>
                 `;
                 listEl.appendChild(li);
