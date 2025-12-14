@@ -202,6 +202,21 @@
             color: #4b5563;
         }
 
+        .blog-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .blog-card-readmore {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #f472b6;
+            white-space: nowrap;
+        }
+
         .pagination {
             display: flex;
             justify-content: center;
@@ -446,7 +461,10 @@
                     <a href="${post.href}">
                         <div class="blog-card-title">${post.title}</div>
                         <div class="blog-card-meta">${post.category}</div>
-                        <p class="blog-card-desc">${post.excerpt}</p>
+                        <div class="blog-card-footer">
+                            <p class="blog-card-desc">${post.excerpt}</p>
+                        </div>
+                        <span class="blog-card-readmore">Read more…</span>
                     </a>
                 `;
                 listEl.appendChild(li);
