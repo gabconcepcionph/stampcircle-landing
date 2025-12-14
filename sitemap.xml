@@ -67,4 +67,9 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://stampcircle.com/blog/paper-stamp-cards-vs-digital-loyalty-programs-what-works-better-for-philippine-smbs.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
