@@ -87,4 +87,9 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://stampcircle.com/blog/loyalty-programs-tailored-for-your-business-coffee-shops-salons-retail-restaurants.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
