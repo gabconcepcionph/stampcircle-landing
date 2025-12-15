@@ -28,6 +28,11 @@
 
   <!-- Blog posts -->
   <url>
+    <loc>https://stampcircle.com/blog/effective-spa-slow-season-strategies-and-retail-sales-tips-for-small-businesses-in-the-philippines.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://stampcircle.com/blog/how-to-overcome-low-sales-and-negative-profit-in-philippine-coffee-shops-top-customer-retention-tips.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
