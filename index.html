@@ -1631,9 +1631,9 @@
                             aria-controls="hero-readmore-content"
                         >...read more</button>
                         <span id="hero-readmore-content" data-readmore-content>
-                            Why Switch Now? <span style="color: #ffeb3b; font-weight: 600;">Post-Ber slump</span> hits hard—January sales drop 50-70% for small businesses. StampCircle fixes lost cards, forgotten stamps, and zero data from paper systems. Get <span style="color: #ffeb3b; font-weight: 600;">automated reminders</span>, <span style="color: #ffeb3b; font-weight: 600;">personalized offers</span>, and <span style="color: #ffeb3b; font-weight: 600;">offline QR scans</span> that work anywhere in PH. Business owners report <span style="color: #ffeb3b; font-weight: 600;">38% more visits in 2 months</span>.​
+                            <br/><br/>Why Switch Now? <span style="color: #ffeb3b; font-weight: 600;">Post-Ber slump</span> hits hard—January sales drop 50-70% for small businesses. StampCircle fixes lost cards, forgotten stamps, and zero data from paper systems. Get <span style="color: #ffeb3b; font-weight: 600;">automated reminders</span>, <span style="color: #ffeb3b; font-weight: 600;">personalized offers</span>, and <span style="color: #ffeb3b; font-weight: 600;">offline QR scans</span> that work anywhere in PH. Business owners report <span style="color: #ffeb3b; font-weight: 600;">38% more visits in 2 months</span>.​
                             <span class="hero-readmore-extra">
-                                Proven for <span style="color: #ffeb3b; font-weight: 600;">PH SMBs</span> – No app downloads for customers, just phone camera scans. Track referrals, birthdays, and dormant customers to reclaim lost revenue. Join 100s of Manila cafes and salons competing with big chains—<span style="color: #ffeb3b; font-weight: 600;">modern, affordable, future-proof</span>. Start your trial today.
+                                <br/><br/>Proven for <span style="color: #ffeb3b; font-weight: 600;">PH SMBs</span> – No app downloads for customers, just phone camera scans. Track referrals, birthdays, and dormant customers to reclaim lost revenue. Join 100s of Manila cafes and salons competing with big chains—<span style="color: #ffeb3b; font-weight: 600;">modern, affordable, future-proof</span>. Start your trial today.
                             </span>
                         </span>
                     </p>
@@ -2500,40 +2500,23 @@
                 }
 
                 if (nextState) {
-                    // On first run, capture and store the full text
+                    // On first run, capture and store the full HTML content
                     if (!heroReadmoreContent.dataset.fullText) {
-                        heroReadmoreContent.dataset.fullText = heroReadmoreContent.textContent.trim();
+                        heroReadmoreContent.dataset.fullText = heroReadmoreContent.innerHTML.trim();
                     }
 
                     const fullText = heroReadmoreContent.dataset.fullText || '';
-                    const words = fullText.split(/\s+/).filter(Boolean);
-
+                    
+                    // Clear and set up for animation
                     heroReadmoreContent.innerHTML = '';
                     heroReadmoreContent.classList.add('is-visible');
 
-                    if (!words.length) {
+                    if (!fullText) {
                         return;
                     }
 
-                    let index = 0;
-                    heroReadmoreContent._readmoreTimerId = window.setInterval(() => {
-                        if (index >= words.length) {
-                            window.clearInterval(heroReadmoreContent._readmoreTimerId);
-                            heroReadmoreContent._readmoreTimerId = undefined;
-                            return;
-                        }
-
-                        const word = words[index];
-
-                        if (word === 'newline') {
-                            heroReadmoreContent.innerHTML += '<br/>';
-                        } else {
-                            const prefix = index === 0 ? '' : ' ';
-                            heroReadmoreContent.innerHTML += prefix + word;
-                        }
-
-                        index += 1;
-                    }, 30);
+                    // Simple approach: just show the content immediately to preserve HTML
+                    heroReadmoreContent.innerHTML = fullText;
                 } else {
                     heroReadmoreContent.classList.remove('is-visible');
                     heroReadmoreContent.innerHTML = '';
