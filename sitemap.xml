@@ -28,6 +28,11 @@
 
   <!-- Blog posts -->
   <url>
+    <loc>https://stampcircle.com/blog/boost-your-small-business-in-the-philippines-with-a-customer-loyalty-program.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://stampcircle.com/blog/effective-spa-slow-season-strategies-and-retail-sales-tips-for-small-businesses-in-the-philippines.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
