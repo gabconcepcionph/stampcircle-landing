@@ -102,4 +102,9 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://stampcircle.com/blog/boost-customer-engagement-with-qr-code-and-mobile-first-loyalty-programs.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
