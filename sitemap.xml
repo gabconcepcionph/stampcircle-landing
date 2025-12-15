@@ -28,6 +28,11 @@
 
   <!-- Blog posts -->
   <url>
+    <loc>https://stampcircle.com/blog/understanding-the-post-holiday-sales-slump-in-the-philippines-how-to-navigate-the-ber-months-and-early-year-sales-drop-in-2025.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://stampcircle.com/blog/social-media-marketing-for-small-businesses-complete-guide-to-growing-your-brand-online.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
