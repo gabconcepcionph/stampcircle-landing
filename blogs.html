@@ -202,6 +202,20 @@
             color: #4b5563;
         }
 
+        .blog-card-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.1rem 0.55rem;
+            border-radius: 999px;
+            background: rgba(255, 64, 129, 0.08);
+            color: #ec4899;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.4rem;
+        }
+
         .blog-card-footer {
             display: flex;
             justify-content: space-between;
@@ -481,14 +495,16 @@
             pageItems.forEach(post => {
                 const li = document.createElement('li');
                 li.className = 'blog-card';
+                const isLoyalty = post.category === 'Loyalty Programs';
                 li.innerHTML = `
                     <a href="${post.href}">
+                        ${isLoyalty ? '<span class="blog-card-tag">Loyalty &amp; Retention</span>' : ''}
                         <div class="blog-card-title">${post.title}</div>
                         <div class="blog-card-meta">${post.category}</div>
                         <div class="blog-card-footer">
                             <p class="blog-card-desc">${post.excerpt}</p>
+                            <span class="blog-card-readmore">Read more…</span>
                         </div>
-                        <span class="blog-card-readmore">Read more…</span>
                     </a>
                 `;
                 listEl.appendChild(li);
