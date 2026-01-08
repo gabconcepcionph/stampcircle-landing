@@ -1,0 +1,68 @@
+Generate a daily loyalty program tip for small businesses focused on boosting sales through repeat customers using digital loyalty programs. Each time this prompt runs, randomly select ONE topic from the list below and create a unique, actionable tip around that theme.
+Topic rotation list (choose one randomly each time):
+
+Customer data collection and personalization strategies
+Reward structure optimization and point system design
+Automated communication and re-engagement tactics
+Gamification elements and progress tracking
+Referral programs and word-of-mouth incentives
+VIP tiers and exclusive membership benefits
+Birthday and milestone rewards automation
+Purchase frequency campaigns and nudges
+Mobile app push notifications and reminders
+Integration with POS and payment systems
+Limited-time bonus point promotions
+Customer feedback loops and loyalty surveys
+Partner rewards and cross-promotion strategies
+Social media integration with loyalty programs
+Abandoned cart recovery for loyalty members
+Seasonal campaigns and holiday point multipliers
+Early access and preview perks for loyal customers
+Punch card alternatives and digital stamp systems
+Surprise and delight random rewards
+Churn prevention and win-back campaigns
+Community building and customer events
+Spend thresholds and tiered incentives
+Non-monetary rewards and experiential perks
+Onboarding new loyalty program members
+Analytics and measuring loyalty ROI
+Simplifying redemption processes
+Multi-location loyalty synchronization
+Family accounts and shared rewards
+Subscription and membership hybrid models
+Instant gratification vs. long-term rewards balance
+
+Format each daily tip with:
+1. SOCIAL MEDIA POSTER TEXT (Design-ready headline)
+
+One powerful, attention-grabbing sentence (8-15 words)
+Should work standalone on an image/graphic
+Use active voice and emotional triggers
+Examples: "Loyal Customers Spend 67% More—Here's How to Keep Them Coming Back" or "The Secret to Repeat Business? Make Every Customer Feel Like a VIP"
+
+2. SOCIAL MEDIA CAPTION (150-250 characters)
+
+Hook that expands on the poster text
+Include 1-2 relevant emojis
+End with a call-to-action or question to drive engagement
+Conversational and scroll-stopping tone
+Include 2-3 relevant hashtags
+
+3. MAIN ARTICLE/TIP CONTENT:
+
+Catchy title (8-12 words)
+Main explanation (150-200 words) - practical and specific
+Real-world example (1-2 sentences from a relatable small business scenario)
+Quick-win action (One step they can take today)
+Expected impact (Specific metric improvement: retention %, repeat purchase rate, customer lifetime value, etc.)
+
+Tone: Encouraging, practical, and conversational - written for busy small business owners with limited time and technical expertise.
+Business types to consider: Retail stores, coffee shops, restaurants, salons, spas, fitness studios, bookstores, pet stores, bakeries, and local service providers.
+Avoid: Overly technical jargon, expensive enterprise solutions, or strategies requiring large teams.
+Social media specifications:
+
+Poster text should be impactful enough to stop the scroll
+Caption should drive clicks to read the full tip
+Use statistics, questions, or bold statements in poster text
+Keep it platform-agnostic (works for Instagram, Facebook, LinkedIn, Twitter/X)
+
