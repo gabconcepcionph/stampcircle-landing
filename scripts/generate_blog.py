@@ -63,13 +63,17 @@ def generate_blog():
     new_filename = f"{data['slug']}.html"
     file_path = os.path.join(BLOG_DIR, new_filename)
     
+    # Calculate accurate reading time (average 200 words per minute)
+    word_count = len(re.findall(r'\w+', data['content_html']))
+    read_time = max(1, round(word_count / 200))
+
     page_html = header_template
     page_html = re.sub(r'<title>.*?</title>', f"<title>{data['title']} | StampCircle</title>", page_html)
     page_html = re.sub(r'<meta name="title" content=".*?">', f'<meta name="title" content="{data["title"]}">', page_html)
     page_html = re.sub(r'<meta name="description" content=".*?">', f'<meta name="description" content="{data["description"]}">', page_html)
     
     page_html += f'\n            <h1 class="section-title">{data["title"]}</h1>'
-    page_html += '\n            <p style="opacity: 0.9; margin-bottom: 3rem; font-size: 1.1rem;">⏱️ 5 min read</p>'
+    page_html += f'\n            <p style="opacity: 0.9; margin-bottom: 3rem; font-size: 1.1rem;">⏱️ {read_time} min read</p>'
     page_html += f'\n            <div class="article-body">\n{data["content_html"]}\n'
     
     # Add Social Media Footnote
