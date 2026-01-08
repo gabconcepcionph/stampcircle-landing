@@ -38,17 +38,23 @@ def generate_blog():
     prompt = f"""
     Use these instructions: {prompt_instructions}
     
+    Target Audience: Philippine small business owners (SMEs), coffee shop owners, retail managers, and service providers (salons, spas) looking to improve sales and customer retention.
+    
+    SEO Goals:
+    - Primary Keywords: 'how to increase sales for small business Philippines', 'digital stamp cards Philippines', 'customer loyalty program Philippines', 'business promotion ideas Philippines', 'improve repeat customers'.
+    - Tone: Practical, encouraging, and localized for the Philippine market (mentioning local business contexts like 'ber months', 'sari-sari stores', 'local cafes', etc., where appropriate).
+    
     Format the output as a JSON object with these keys:
-    - title: String (The blog title)
-    - description: String (Meta description for SEO)
-    - content_html: String (The HTML content to go inside .article-body, use <h2>, <p>, <ul>, <li>)
+    - title: String (SEO-friendly title using high-volume keywords, e.g., '5 Ways to Increase Your Cafe Sales in the Philippines with Digital Stamp Cards')
+    - description: String (SEO meta description, max 160 chars, includes call to action)
+    - content_html: String (The HTML content to go inside .article-body. Use <h2> for subheadings, <p> for paragraphs, and <ul>/<li> for lists. Naturally integrate keywords.)
     - category: String (One of: 'Customer Loyalty', 'Business Strategy', 'Coffee Shops', 'Seasonal Sales', 'Loyalty Programs', 'Customer Retention')
-    - excerpt: String (A 1-2 sentence summary for the blog card)
-    - slug: String (URL friendly version of title, e.g., 'how-to-boost-sales')
+    - excerpt: String (A 1-2 sentence summary for the blog card, includes primary keywords)
+    - slug: String (SEO-friendly URL slug, e.g., 'increase-sales-small-business-philippines-loyalty')
     - social_poster_text: String (Text for social media poster)
-    - social_caption: String (Caption for social media)
+    - social_caption: String (Caption for social media including relevant hashtags like #SMEPhilippines #StampCircle #CustomerLoyalty)
 
-    Ensure the tone is encouraging and practical for small business owners. Return ONLY the JSON.
+    Return ONLY the JSON.
     """
 
     response = model.generate_content(prompt)
