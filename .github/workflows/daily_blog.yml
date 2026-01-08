@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
 
       - name: Install dependencies
         run: pip install google-generativeai
@@ -30,6 +30,6 @@ jobs:
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add landing/blog/*.html landing/blogs.html landing/sitemap.xml
+          git add blog/*.html blogs.json blogs.html sitemap.xml
           git commit -m "docs: auto-generate daily blog post" || echo "No changes to commit"
           git push
