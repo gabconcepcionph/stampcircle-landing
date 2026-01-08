@@ -1,0 +1,36 @@
+name: Daily Blog Generation
+
+on:
+  schedule:
+    - cron: '0 3 * * *' # 11:00 AM PHT (UTC+8)
+    - cron: '0 9 * * *' # 5:00 PM PHT (UTC+8)
+  workflow_dispatch:
+
+jobs:
+  generate-blog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install google-generativeai
+
+      - name: Run generation script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        working-directory: landing
+        run: python scripts/generate_blog.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add landing/blog/*.html landing/blogs.html landing/sitemap.xml
+          git commit -m "docs: auto-generate daily blog post" || echo "No changes to commit"
+          git push
