@@ -45,6 +45,8 @@ def generate_blog():
     - category: String (One of: 'Customer Loyalty', 'Business Strategy', 'Coffee Shops', 'Seasonal Sales', 'Loyalty Programs', 'Customer Retention')
     - excerpt: String (A 1-2 sentence summary for the blog card)
     - slug: String (URL friendly version of title, e.g., 'how-to-boost-sales')
+    - social_poster_text: String (Text for social media poster)
+    - social_caption: String (Caption for social media)
 
     Ensure the tone is encouraging and practical for small business owners. Return ONLY the JSON.
     """
@@ -69,6 +71,16 @@ def generate_blog():
     page_html += f'\n            <h1 class="section-title">{data["title"]}</h1>'
     page_html += '\n            <p style="opacity: 0.9; margin-bottom: 3rem; font-size: 1.1rem;">⏱️ 5 min read</p>'
     page_html += f'\n            <div class="article-body">\n{data["content_html"]}\n'
+    
+    # Add Social Media Footnote
+    page_html += f"""
+                <hr style="margin: 3rem 0 2rem; border: 0; border-top: 1px solid rgba(255,255,255,0.2);">
+                <div class="social-footnote" style="font-size: 0.85rem; opacity: 0.8; line-height: 1.4;">
+                    <p><strong>Social Media Poster Text:</strong><br>{data.get('social_poster_text', '')}</p>
+                    <p style="margin-top: 1rem;"><strong>Social Media Caption:</strong><br>{data.get('social_caption', '')}</p>
+                </div>
+    """
+    
     page_html += footer_template
 
     with open(file_path, 'w', encoding='utf-8') as f:

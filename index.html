@@ -1599,12 +1599,7 @@
                 <li><a href="use-cases.html">Use Cases</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Blog</a>
-                    <ul class="dropdown-menu" aria-label="Blog posts">
-                        <li><a href="blog/loyalty-program-roi-in-the-philippines-how-small-businesses-can-accurately-calculate-returns.html">Loyalty Program ROI in the Philippines: How Small Businesses Can Accurately Calculate Returns</a></li>
-                        <li><a href="blog/holidays-loyalty-promos-philippines-seasonal-strategies-that-drive-sales.html">Holidays Loyalty Promos Philippines: Seasonal Strategies That Drive Sales</a></li>
-                        <li><a href="blog/digital-stamp-cards-for-small-businesses-philippine-loyalty-program-guide-2026.html">Digital Stamp Cards for Small Businesses: The Philippine Loyalty Program Guide (2026)</a></li>
-                        <li><a href="blog/maximizing-loyalty-program-roi-for-small-business-increase-clv-and-repeat-sales.html">Maximizing Loyalty Program ROI for Small Business: How to Increase Customer Lifetime Value and Drive Repeat Sales</a></li>
-                        <li><a href="blog/local-and-hyperlocal-loyalty-marketing-future-of-customer-engagement.html">Local &amp; Hyperlocal Loyalty Marketing: The Future of Customer Engagement for Nearby Businesses</a></li>
+                    <ul class="dropdown-menu" id="blog-dropdown" aria-label="Blog posts">
                         <li><a href="blogs.html">View all blog posts</a></li>
                     </ul>
                 </li>
@@ -3217,6 +3212,27 @@
 
             container.dataset.decoded = 'true';
         }
+    </script>
+    <script>
+        // Fetch and display latest blog posts in dropdown
+        async function loadLatestBlogs() {
+            try {
+                const response = await fetch('blogs.json');
+                const posts = await response.json();
+                const dropdown = document.getElementById('blog-dropdown');
+                const viewAllLi = dropdown.querySelector('li:last-child');
+                
+                // Show latest 5 posts
+                posts.slice(0, 5).forEach(post => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="${post.href}">${post.title}</a>`;
+                    dropdown.insertBefore(li, viewAllLi);
+                });
+            } catch (error) {
+                console.error('Error loading latest blogs:', error);
+            }
+        }
+        loadLatestBlogs();
     </script>
 </body>
 </html>
