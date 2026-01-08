@@ -1,65 +1,3 @@
-# Automation Guide: Daily AI Blog Generation
-
-This guide outlines how to set up a GitHub Action to automatically generate and publish blog posts using Gemini AI every day at 11:00 AM and 5:00 PM PHT.
-
-## Prerequisites
-1. **Gemini API Key**: Obtain one from the [Google AI Studio](https://aistudio.google.com/).
-2. **GitHub Secret**: Add your API key to your repository:
-   - Go to **Settings > Secrets and variables > Actions**.
-   - Create a new repository secret named `GEMINI_API_KEY`.
-3. **Workflow Permissions**:
-   - Go to **Settings > Actions > General**.
-   - Under **Workflow permissions**, select **Read and write permissions**.
-
----
-
-## Step 1: Create the GitHub Action Workflow
-Create a file at `.github/workflows/daily_blog.yml`:
-
-```yaml
-name: Daily Blog Generation
-
-on:
-  schedule:
-    - cron: '0 3 * * *' # 11:00 AM PHT (UTC+8)
-    - cron: '0 9 * * *' # 5:00 PM PHT (UTC+8)
-  workflow_dispatch:
-
-jobs:
-  generate-blog:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Install dependencies
-        run: pip install google-generativeai
-
-      - name: Run generation script
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python scripts/generate_blog.py
-
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          git add landing/blog/*.html landing/blogs.html landing/sitemap.xml
-          git commit -m "docs: auto-generate daily blog post" || echo "No changes to commit"
-          git push
-```
-
----
-
-## Step 2: Create the Python Script
-Create a file at `landing/scripts/generate_blog.py`. This script handles the AI interaction, file updates, and manages the `blogs.json` data file.
-
-```python
 import os
 import json
 import re
@@ -81,7 +19,7 @@ def generate_blog():
         return
 
     genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    model = genai.GenerativeModel('gemini-2.5-flash')
 
     # Read files with explicit encoding
     with open(PROMPT_FILE, 'r', encoding='utf-8') as f:
@@ -124,23 +62,23 @@ def generate_blog():
     file_path = os.path.join(BLOG_DIR, new_filename)
     
     page_html = header_template
-    page_html = re.sub(r'<title>.*?</title>', f"<title>{{data['title']}} | StampCircle</title>", page_html)
-    page_html = re.sub(r'<meta name="title" content=".*?">', f'<meta name="title" content="{{data["title"]}}">', page_html)
-    page_html = re.sub(r'<meta name="description" content=".*?">', f'<meta name="description" content="{{data["description"]}}">', page_html)
+    page_html = re.sub(r'<title>.*?</title>', f"<title>{data['title']} | StampCircle</title>", page_html)
+    page_html = re.sub(r'<meta name="title" content=".*?">', f'<meta name="title" content="{data["title"]}">', page_html)
+    page_html = re.sub(r'<meta name="description" content=".*?">', f'<meta name="description" content="{data["description"]}">', page_html)
     
-    page_html += f'\n            <h1 class="section-title">{{data["title"]}}</h1>'
+    page_html += f'\n            <h1 class="section-title">{data["title"]}</h1>'
     page_html += '\n            <p style="opacity: 0.9; margin-bottom: 3rem; font-size: 1.1rem;">⏱️ 5 min read</p>'
-    page_html += f'\n            <div class="article-body">\n{{data["content_html"]}}\n'
+    page_html += f'\n            <div class="article-body">\n{data["content_html"]}\n'
     page_html += footer_template
 
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write(page_html)
-    print(f"Created new blog: {{file_path}}")
+    print(f"Created new blog: {file_path}")
 
     # 2. Update blogs.json (Add to beginning of list)
     new_post = {
         "title": data["title"],
-        "href": f"blog/{{new_filename}}",
+        "href": f"blog/{new_filename}",
         "category": data["category"],
         "excerpt": data["excerpt"]
     }
@@ -158,16 +96,20 @@ def generate_blog():
     print("Updated blogs.json")
 
     # 3. Update sitemap.xml
-```
+    with open(SITEMAP, 'r', encoding='utf-8') as f:
+        sitemap_content = f.read()
+    
+    new_url = f"""  <url>
+    <loc>https://stampcircle.com/blog/{new_filename}</loc>
+    <lastmod>{datetime.now().strftime('%Y-%m-%d')}</lastmod>
+    <priority>0.80</priority>
+  </url>"""
+    
+    if "</urlset>" in sitemap_content:
+        updated_sitemap = sitemap_content.replace("</urlset>", f"{new_url}\n</urlset>")
+        with open(SITEMAP, 'w', encoding='utf-8') as f:
+            f.write(updated_sitemap)
+        print("Updated sitemap.xml")
 
----
-
-## Step 3: Verification
-1. Push these changes to your repository.
-2. Go to the **Actions** tab in GitHub.
-3. Select **Daily Blog Generation** and click **Run workflow** to test it immediately.
-4. Verify that:
-   - A new file appears in `landing/blog/`.
-   - `landing/blogs.json` has a new entry at the top of the list.
-   - `landing/blogs.html` dynamically fetches and displays the new post.
-   - `landing/sitemap.xml` includes the new URL.
+if __name__ == "__main__":
+    generate_blog()
