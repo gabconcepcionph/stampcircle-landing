@@ -3,7 +3,8 @@ import json
 import re
 import random
 from datetime import datetime
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 
 # Configuration - All paths are relative to the landing/ directory
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
@@ -18,8 +19,8 @@ def generate_blog():
         print("Error: GEMINI_API_KEY not found.")
         return
 
-    genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel('gemini-2.5-flash')
+    client = genai.Client(api_key=GEMINI_API_KEY)
+    model_id = "gemini-2.0-flash" # Switching to 2.0 as requested/implied by package change
 
     # Read files with explicit encoding
     with open(PROMPT_FILE, 'r', encoding='utf-8') as f:
@@ -57,12 +58,19 @@ def generate_blog():
     Return ONLY the JSON.
     """
 
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(
+        model=model_id,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            response_mime_type='application/json',
+        ),
+    )
+    
     try:
-        json_str = response.text.replace('```json', '').replace('```', '').strip()
-        data = json.loads(json_str)
+        data = json.loads(response.text)
     except Exception as e:
         print(f"Failed to parse AI response: {e}")
+        print(f"Response text: {response.text}")
         return
 
     # 1. Create the new HTML file
