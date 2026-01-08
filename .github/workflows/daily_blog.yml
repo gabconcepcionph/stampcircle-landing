@@ -24,7 +24,6 @@ jobs:
       - name: Run generation script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        working-directory: landing
         run: python scripts/generate_blog.py
 
       - name: Commit and push changes
