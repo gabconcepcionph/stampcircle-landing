@@ -20,7 +20,7 @@ def generate_blog():
         return
 
     client = genai.Client(api_key=GEMINI_API_KEY)
-    model_id = "gemini-2.0-flash" # Switching to 2.0 as requested/implied by package change
+    model_id = "gemini-2.5-flash" # Switching to 2.0 as requested/implied by package change
 
     # Read files with explicit encoding
     with open(PROMPT_FILE, 'r', encoding='utf-8') as f:
