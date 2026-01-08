@@ -157,4 +157,9 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://stampcircle.com/blog/turn-data-into-dollars-personalize-loyalty-for-bigger-sales.html</loc>
+    <lastmod>2026-01-08</lastmod>
+    <priority>0.80</priority>
+  </url>
 </urlset>
