@@ -81,13 +81,17 @@ def generate_blog():
     word_count = len(re.findall(r'\w+', data['content_html']))
     read_time = max(1, round(word_count / 200))
 
+    # Format article date (e.g., "January 19, 2026")
+    article_date = datetime.now().strftime('%B %d, %Y')
+
     page_html = header_template
     page_html = re.sub(r'<title>.*?</title>', f"<title>{data['title']} | StampCircle</title>", page_html)
     page_html = re.sub(r'<meta name="title" content=".*?">', f'<meta name="title" content="{data["title"]}">', page_html)
     page_html = re.sub(r'<meta name="description" content=".*?">', f'<meta name="description" content="{data["description"]}">', page_html)
     
     page_html += f'\n            <h1 class="section-title">{data["title"]}</h1>'
-    page_html += f'\n            <p style="opacity: 0.9; margin-bottom: 3rem; font-size: 1.1rem;">⏱️ {read_time} min read</p>'
+    page_html += f'\n            <p style="opacity: 0.7; margin-top: 0.35rem; margin-bottom: 0.25rem; font-size: 0.85rem; letter-spacing: 0.02em; text-transform: uppercase;">Published on {article_date}</p>'
+    page_html += f'\n            <p style="opacity: 0.8; margin-bottom: 2.5rem; font-size: 0.9rem;">⏱️ {read_time} min read</p>'
     page_html += f'\n            <div class="article-body">\n{data["content_html"]}\n'
     
     # Add Social Media Footnote
