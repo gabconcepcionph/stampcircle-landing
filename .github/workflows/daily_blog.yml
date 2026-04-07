@@ -1,9 +1,9 @@
 name: Daily Blog Generation
 
 on:
-  schedule:
-    - cron: '0 3 * * *' # 11:00 AM PHT (UTC+8)
-    - cron: '0 9 * * *' # 5:00 PM PHT (UTC+8)
+  # schedule:
+  #   - cron: '0 3 * * *' # 11:00 AM PHT (UTC+8)
+  #   - cron: '0 9 * * *' # 5:00 PM PHT (UTC+8)
   workflow_dispatch:
 
 jobs:
